@@ -113,6 +113,61 @@
             font-size: 14px;
         }
         .locate-btn:hover { background: #388e3c; }
+
+        .workinprogress {
+        position: absolute;
+        bottom: 70px;
+        left: 10px;
+        right: 10px;
+        background: rgba(0,0,0,0.75);
+        color: #ffcc00;
+        padding: 8px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        text-align: center;
+        z-index: 1001;
+        backdrop-filter: blur(4px);
+        font-weight: bold;
+        pointer-events: none;
+}
+@media (max-width: 600px) {
+    .workinprogress { bottom: 90px; font-size: 10px; }
+}
+
+/* Crediti minimale Mappa Bianca (basso centro) */
+.mappa-bianca-credit {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(4px);
+    padding: 4px 12px;
+    border-radius: 30px;
+    font-size: 11px;
+    font-family: 'Segoe UI', sans-serif;
+    white-space: nowrap;
+    pointer-events: auto;
+    color: #ddd;
+}
+.mappa-bianca-credit a {
+    color: #ffaa66;
+    text-decoration: none;
+    font-weight: bold;
+}
+.mappa-bianca-credit a:hover {
+    text-decoration: underline;
+    color: #ffcc88;
+}
+@media (max-width: 600px) {
+    .mappa-bianca-credit {
+        font-size: 9px;
+        padding: 3px 10px;
+        bottom: 60px; /* evita sovrapposizione con contatore/legenda su mobile */
+        white-space: nowrap;
+    }
+}
         
         @media (max-width: 600px) {
             .filter-btn { padding: 4px 10px; font-size: 12px; }
@@ -125,6 +180,9 @@
 </head>
 <body>
     <div id="map"></div>
+    <div class="workinprogress">
+    🔧 Lavori in corso – Questa è un'anteprima. Contenuti in arrivo.
+    </div>
     <div class="filter-bar" id="filterBar"></div>
     <div class="locate-container">
         <button id="locateBtn" class="locate-btn">📍 La mia posizione</button>
@@ -132,7 +190,9 @@
     <div class="legend" id="legend"></div>
     <div class="counter" id="counter">Caricamento...</div>
     <div class="offline-msg" id="offlineMsg">⚠️ Modalità offline – alcune aree potrebbero non essere visibili</div>
-    <button id="installBtn" style="display: none;">Installa App</button>
+    <div class="mappa-bianca-credit">
+    Powered by <strong>Mappa Bianca</strong> | <a href="https://vival18.github.io/mappa-bianca/" target="_blank" rel="noopener noreferrer">Scopri di più</a>
+</div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
