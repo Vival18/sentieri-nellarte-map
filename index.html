@@ -287,7 +287,7 @@
         const categoryNames = {
             'opera': 'Opere',
             'servizio': 'Servizi',
-            'storico': 'Storici'
+            'storico': 'Punti storici'
         };
 
         // ========================
@@ -360,7 +360,7 @@
                 if (category === 'Tutti') match = true;
                 else if (category === 'Opere' && item.tipologia === 'opera') match = true;
                 else if (category === 'Servizi' && item.tipologia === 'servizio') match = true;
-                else if (category === 'Storici' && item.tipologia === 'storico') match = true;
+                else if (category === 'Punti Storici' && item.tipologia === 'storico') match = true;
                 if (match) markerClusterGroup.addLayer(item.marker);
             });
             updateCounter();
@@ -369,7 +369,7 @@
         function buildFilters() {
             const filterDiv = document.getElementById('filterBar');
             filterDiv.innerHTML = '';
-            const buttons = ['Tutti', 'Opere', 'Servizi', 'Storici'];
+            const buttons = ['Tutti', 'Opere', 'Servizi', 'Punti Storici'];
             buttons.forEach(cat => {
                 const btn = document.createElement('button');
                 btn.textContent = cat;
@@ -483,7 +483,7 @@
                     let tipologia = m.tipologia;
                     if (tipologia === 'opera' || tipologia === 'opere') tipologia = 'opera';
                     else if (tipologia === 'servizio' || tipologia === 'servizi') tipologia = 'servizio';
-                    else if (tipologia === 'storico' || tipologia === 'storici') tipologia = 'storico';
+                    else if (tipologia === 'storico' || tipologia === 'Punti storici') tipologia = 'storico';
                     else tipologia = 'opera';
                     m.tipologiaNorm = tipologia;
                     typesSet.add(tipologia);
