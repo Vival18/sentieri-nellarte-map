@@ -1,58 +1,85 @@
-# Mappa Bianca – WebApp PWA per mappe interattive
+# Sentieri nell’Arte – Mappa interattiva per il Baldo Festival
 
-**Versione:** 1.0  
-**Autore:** Fabio Vivaldi  
-**Licenza:** GPLv3  
+Mappa web interattiva che visualizza il sentiero artistico del **Baldo Festival** (Caprino Veronese). Realizzata con **Leaflet** e **Mappa Bianca** (PWA base). I punti di interesse sono divisi in tre categorie (opere, servizi, punti storici) con filtri, geolocalizzazione e clustering.
 
-Mappa Bianca è una **Progressive Web App (PWA)** installabile che visualizza una mappa interattiva con marker raggruppabili (clustering), filtri per tipologia, geolocalizzazione e funzionalità offline. I marker sono caricati da un file `markers.json`, facilmente esportabile dal plugin WordPress **ArchaeoMap** (o creato manualmente).
+## 🔗 Link alla mappa pubblicata
+[https://vival18.github.io/sentieri-nellarte-map/](https://vival18.github.io/sentieri-nellarte-map/)
 
-Ideale per: percorsi turistici, festival culturali, mappe di territorio, itinerari artistici.
+## 📦 Contenuto del repository
 
----
+sentieri-nellarte-map/
+├── index.html # Pagina principale (mappa, filtri, stili)
+├── markers.json # Elenco dei punti di interesse (modificabile)
+├── mappaturasentieroarte.geojson # Tracciato del sentiero (GeoJSON)
+├── manifest.json # Configurazione PWA (opzionale)
+├── sw.js # Service Worker per offline caching
+├── screenshot.png # (anteprima, non necessaria per il funzionamento)
+└── README.md # Questo file
+text
 
-## ✨ Funzionalità principali
 
-- 🗺️ Mappa basata su **Leaflet** (OpenStreetMap)
-- 📍 **Marker colorati** per tipologia (es. Storico, Religioso, Enogastronomico…)
-- 🔍 **Clustering automatico** dei marker (zoom out)
-- 🎛️ **Filtri dinamici** a bottoni (mostra/nasconde marker per categoria)
-- 📌 **Popup informativi** con titolo, tipologia, immagine, estratto e link esterno
-- 🧭 **Geolocalizzazione**: pulsante “La mia posizione” centra la mappa e mostra un marker blu con cerchio di accuratezza
-- 📴 **Offline** (dopo prima visita): interfaccia, marker e legenda funzionano senza connessione (i tile richiedono rete o caching avanzato)
-- ⬇️ **Installabile** su Android/Chrome/Edge come app nativa
-- ♿ **Responsive** (funziona bene su smartphone e desktop)
+## 🎨 Categorie e colori
 
----
+| Categoria | Colore | Valore in `markers.json` |
+|-----------|--------|---------------------------|
+| Opere d’arte | Rosso (`#e31a23`) | `"tipologia": "opera"` |
+| Servizi (parcheggio, info) | Blu (`#1e90ff`) | `"tipologia": "servizio"` |
+| Punti storici (chiesa, lavatoio, fontana) | Arancione (`#ff8c00`) | `"tipologia": "storico"` |
 
-## 🚀 Come usare la webapp (per utenti finali)
+## 🛠 Come modificare i dati
 
-La webapp è già pubblicata su GitHub Pages (es. `https://vival18.github.io/mappa-bianca-webapp/`).
+### Aggiungere / modificare un punto di interesse
+1. Apri `markers.json` con un editor di testo.
+2. Segui la struttura di un elemento esistente:
+   ```json
+   {
+        "title": "Nome del punto",
+        "lat": "45.618771",
+        "lng": "10.824897",
+        "tipologia": "storico",
+        "excerpt": "Breve descrizione",
+        "thumbnail": "https://esempio.it/foto.jpg"  // opzionale
+   }
 
-- **Navigare**: zoom, click sui marker, utilizzo dei filtri.
-- **Geolocalizzazione**: clicca sul pulsante verde “📍 La mia posizione” (concedi il permesso).
-- **Installare su telefono**:  
-  - Android/Chrome: apri la webapp → menu browser → “Installa app” (o “Aggiungi a schermata Home”).  
-  - iOS/Safari: “Condividi” → “Aggiungi a Home”.  
-- **Offline**: dopo aver visitato la mappa online una volta, i file principali (index.html, markers.json, librerie) restano disponibili offline. I tile delle mappe vengono cachati durante la navigazione.
+    Salva e ricarica la pagina (hard refresh: Ctrl+F5).
 
----
+## Modificare il tracciato del sentiero
 
-## 🛠️ Personalizzazione (per sviluppatori)
+    Sostituisci il file mappaturasentieroarte.geojson con un nuovo GeoJSON (deve contenere una LineString o MultiLineString).
 
-### 1. Cambiare i marker (file `markers.json`)
+    Puoi creare/ modificare un GeoJSON con strumenti online come geojson.io.
 
-Il file `markers.json` deve contenere un array di oggetti con questa struttura:
+## Cambiare colori o nomi delle categorie
 
-```json
-[
-  {
-    "title": "Forte di Rivoli",
-    "lat": 45.574720,
-    "lng": 10.818423,
-    "tipologia": "Storico",
-    "excerpt": "Descrizione breve...",
-    "content": "Descrizione completa...",
-    "thumbnail": "https://...",
-    "permalink": "https://..."
-  }
-]
+    Nel file index.html, cerca le variabili colorMap e categoryNames (nella sezione <script>). Modifica i valori esadecimali o i testi.
+
+ ## Funzionalità
+
+    Marker cluster → raggruppa automaticamente i punti quando si zoomma.
+
+    Filtri → pulsanti in alto a destra (Tutti, Opere, Servizi, Storici).
+
+    Geolocalizzazione → pulsante in alto a sinistra (mostra la tua posizione sulla mappa).
+
+    Offline → l’interfaccia e i marker restano accessibili (i tile richiedono connessione iniziale, ma possono essere cached).
+
+    Responsive → su smartphone i controlli zoom sono nascosti, la legenda si sposta in alto, il banner “Lavori in corso” è centrato e non occupa tutta la larghezza.
+
+## 🧪 Debug per sviluppatori
+
+    Ottenere coordinate cliccando sulla mappa (utile per aggiungere nuovi punti):
+    La mappa ha un evento click che stampa in console (F12) le coordinate nel formato [lat, lng]. L’utente finale non vede nulla.
+
+## 📄 Licenza e crediti
+
+    Mappa Bianca – progetto base realizzato da Vival18.
+
+    Leaflet – libreria open source (BSD 2-Clause).
+
+    OpenStreetMap – tile layer (© contributori OSM).
+
+    Baldo Festival – ideatore del percorso “Sentieri nell’Arte”.
+
+## Questa demo è un pilota gratuito in cambio di referenza e crediti. Per usi commerciali o integrazioni avanzate, contattare lo sviluppatore.
+
+Ultimo aggiornamento: giugno 2026
