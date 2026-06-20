@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
-    <link rel="manifest" href="/sentieri-nellarte-map/manifest.json">
+    <link rel="manifest" href="/sentieri-nellarte-map/manifest.json?v=2">
     <meta name="theme-color" content="#2d5a27">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6L90M4TJHC"></script>
@@ -183,79 +183,135 @@
             color: #ffcc88;
         }
         
-        /* ================================= */
-        /* REGOLE PER SMARTPHONE (max-width: 600px) */
-        /* ================================= */
-        @media (max-width: 600px) {
-            .filter-bar {
-                top: 10px;
-                right: 10px;
-                padding: 4px 8px;
-                gap: 4px;
-                max-width: calc(100% - 130px);
-            }
-            .filter-btn { padding: 4px 10px; font-size: 11px; }
-            
-            .locate-container {
-                top: 10px;
-                left: 10px;
-            }
-            .locate-btn { padding: 4px 8px; font-size: 12px; }
-            
-            /* I controlli zoom di Leaflet li nascondiamo su mobile (opzionale) */
-            .leaflet-control-zoom {
-                display: none !important;
-            }
-            
-            /* Nascondi il contatore */
-            .counter {
-                display: none;
-            }
-            
-            /* Legenda più in alto per evitare sovrapposizioni */
-            .legend {
-                font-size: 10px;
-                bottom: 100px;
-            }
-            
-            .offline-msg { top: 80px; font-size: 10px; white-space: nowrap; }
-            .workinprogress {
-                bottom: 60px;
-                font-size: 10px;
-                padding: 5px 12px;
-                white-space: nowrap;
-            }
-            .mappa-bianca-credit {
-                font-size: 9px;
-                padding: 3px 10px;
-                bottom: 30px;
-                white-space: nowrap;
-            }
-        }
-
-        @media (max-width: 370px) {
+/* ================================= */
+/* REGOLE PER SMARTPHONE (max-width: 600px) */
+/* ================================= */
+@media (max-width: 600px) {
+    /* Barra filtri più compatta e spostata a destra */
     .filter-bar {
-        max-width: calc(100% - 80px);  /* riduci la larghezza massima */
+        top: 10px;
+        right: 10px;
         padding: 4px 6px;
         gap: 3px;
+        max-width: calc(100% - 140px);
+        background: rgba(255,255,255,0.92);
+        border-radius: 30px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        flex-wrap: nowrap;  /* impedisce il wrap su due righe */
+        overflow-x: auto;   /* se troppo lunghi, scrollano orizzontalmente */
+        -webkit-overflow-scrolling: touch;
     }
     .filter-btn {
         padding: 3px 8px;
         font-size: 10px;
+        white-space: nowrap;
+        border-radius: 20px;
+        flex-shrink: 0;
     }
+
+    /* Pulsante geolocalizzazione più piccolo e più in basso */
     .locate-container {
-        left: 5px;
+        top: 12px;
+        left: 10px;
+        z-index: 1000;
+    }
+    .locate-btn {
+        padding: 4px 8px;
+        font-size: 11px;
+        border-radius: 20px;
+        background: #4caf50;
+        color: white;
+        border: none;
+        font-weight: bold;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    /* Nascondi i controlli zoom di Leaflet su mobile (opzionale) */
+    .leaflet-control-zoom {
+        display: none !important;
+    }
+
+    /* Nascondi il contatore */
+    .counter {
+        display: none;
+    }
+
+    /* Legenda più in alto per evitare sovrapposizioni */
+    .legend {
+        font-size: 10px;
+        bottom: 80px;
+        right: 10px;
+        padding: 6px 10px;
+        background: rgba(255,255,255,0.85);
+        border-radius: 10px;
+    }
+
+    .offline-msg {
+        top: 70px;
+        font-size: 10px;
+        white-space: nowrap;
+    }
+
+    .workinprogress {
+        bottom: 60px;
+        font-size: 10px;
+        padding: 4px 12px;
+        white-space: nowrap;
+    }
+
+    .mappa-bianca-credit {
+        font-size: 9px;
+        padding: 3px 10px;
+        bottom: 20px;
+        white-space: nowrap;
+    }
+}
+
+/* ================================= */
+/* REGOLE PER SMARTPHONE MOLTO PICCOLI (max-width: 370px) */
+/* ================================= */
+@media (max-width: 370px) {
+    .filter-bar {
+        max-width: calc(100% - 100px);  /* ancora più stretto */
+        padding: 3px 4px;
+        gap: 2px;
         top: 8px;
+        right: 8px;
+    }
+    .filter-btn {
+        padding: 2px 6px;
+        font-size: 9px;
+        border-radius: 16px;
+    }
+
+    .locate-container {
+        top: 8px;
+        left: 6px;
     }
     .locate-btn {
         padding: 3px 6px;
-        font-size: 11px;
+        font-size: 10px;
+        border-radius: 16px;
     }
+
     .workinprogress {
-        font-size: 9px;
-        padding: 4px 10px;
-        bottom: 55px;
+        font-size: 8px;
+        padding: 3px 10px;
+        bottom: 50px;
         white-space: nowrap;
+    }
+
+    .legend {
+        font-size: 9px;
+        bottom: 70px;
+        right: 6px;
+        padding: 4px 8px;
+    }
+
+    .mappa-bianca-credit {
+        font-size: 8px;
+        padding: 2px 8px;
+        bottom: 16px;
     }
 }
     </style>
@@ -313,59 +369,22 @@
         }
 
 function initMap() {
-    // 1. Crea la mappa CON le coordinate di default
     map = L.map('map', {
         center: [45.620474, 10.829623],
-        zoom: 15,
-        zoomControl: false  // lo aggiungiamo dopo per posizionarlo bene
+        zoom: 15
     });
     
-    // 2. Aggiungi il tile layer
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
     
-    // 3. Aggiungi controlli zoom in basso a sinistra
-    L.control.zoom({ position: 'bottomleft' }).addTo(map);
+    // Nessun localStorage, nessun ripristino
     
-    // 4. FORZA il centro dopo 100ms (per sicurezza su mobile)
-    setTimeout(() => {
-        map.setView([45.620474, 10.829623], 15);
-    }, 100);
-    
-    // 5. Salva la vista quando l'utente si sposta
-    map.on('moveend', function() {
-        const center = map.getCenter();
-        const zoom = map.getZoom();
-        localStorage.setItem('mappaVista', JSON.stringify({ lat: center.lat, lng: center.lng, zoom: zoom }));
-    });
-    
-    // 6. Ripristina la vista salvata SOLO se è in zona Rivoli
-    const savedView = localStorage.getItem('mappaVista');
-    if (savedView) {
-        try {
-            const { lat, lng, zoom } = JSON.parse(savedView);
-            // Controllo: se la vista salvata è nelle vicinanze di Porcino (lat 45.6, lng 10.8)
-            if (lat > 45.5 && lat < 45.7 && lng > 10.7 && lng < 10.9) {
-                map.setView([lat, lng], zoom);
-            } else {
-                // Se è fuori zona, resetta al default
-                map.setView([45.620474, 10.829623], 15);
-                localStorage.removeItem('mappaVista'); // pulisce la vista corrotta
-            }
-        } catch (e) {
-            // Se il JSON è corrotto, resetta
-            map.setView([45.620474, 10.829623], 15);
-            localStorage.removeItem('mappaVista');
-        }
-    }
-    
-    // 7. Evento click per debug (opzionale)
+    // Eventuale debug
     map.on('click', function(e) {
         console.log(`📍 [${e.latlng.lat.toFixed(6)}, ${e.latlng.lng.toFixed(6)}]`);
     });
     
-    // 8. Cluster
     markerClusterGroup = L.markerClusterGroup({
         showCoverageOnHover: false,
         maxClusterRadius: 80,

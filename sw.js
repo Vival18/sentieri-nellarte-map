@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sentieri-arte-v1';
+const CACHE_NAME = 'sentieri-arte-v2';
 const urlsToCache = [
   '/sentieri-nellarte-map/',
   '/sentieri-nellarte-map/index.html',
