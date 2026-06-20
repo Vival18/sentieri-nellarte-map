@@ -670,84 +670,80 @@ function initMap() {
         navigator.serviceWorker.register('/sentieri-nellarte-map/sw.js');
         }
 
-        // ========================
-        // INSTALLAZIONE PWA
-        // ========================
-        const installContainer = document.getElementById('installContainer');
-        const installBtn = document.getElementById('installAppBtn');
-        let deferredPrompt = null;
+// ========================
+// INSTALLAZIONE PWA
+// ========================
+const installContainer = document.getElementById('installContainer');
+const installBtn = document.getElementById('installAppBtn');
+let deferredPrompt = null;
 
-        // --- 1. Rilevamento su Android (Chrome) ---
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            // Mostra il pulsante solo su mobile (schermo < 768px)
-            if (window.innerWidth <= 768) {
+// --- 1. Controllo se l'app è già installata ---
+function isAppInstalled() {
+    if (window.matchMedia('(display-mode: standalone)').matches) return true;
+    if (window.navigator.standalone === true) return true;
+    return false;
+}
+
+if (isAppInstalled()) {
+    installContainer.style.display = 'none';
+}
+
+// --- 2. Evento beforeinstallprompt ---
+window.addEventListener('beforeinstallprompt', (e) => {
+    if (isAppInstalled()) return;
+    e.preventDefault();
+    deferredPrompt = e;
+    if (window.innerWidth <= 768) {
+        installContainer.style.display = 'block';
+    }
+});
+
+// --- 3. Click sul pulsante ---
+installBtn.addEventListener('click', async () => {
+    if (deferredPrompt) {
+        deferredPrompt.prompt();
+        const result = await deferredPrompt.userChoice;
+        if (result.outcome === 'accepted') {
+            installContainer.style.display = 'none';
+        }
+        deferredPrompt = null;
+    } else {
+        // iOS o browser senza supporto
+        showIOSInstructions();
+    }
+});
+
+// --- 4. App installata con successo ---
+window.addEventListener('appinstalled', () => {
+    installContainer.style.display = 'none';
+    deferredPrompt = null;
+});
+
+// --- 5. Istruzioni per iOS ---
+function showIOSInstructions() {
+    if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+        alert(
+            '📲 Per installare l\'app su iPhone/iPad:\n\n' +
+            '1. Tocca l\'icona "Condividi" (quadrato con freccia).\n' +
+            '2. Scorri e seleziona "Aggiungi alla schermata Home".\n' +
+            '3. Tocca "Aggiungi".'
+        );
+    } else {
+        alert('Apri questo link da Chrome e tocca "Installa" per aggiungere alla home.');
+    }
+}
+
+// --- 6. Mostra il pulsante se su mobile ma beforeinstallprompt non si attiva ---
+if (window.innerWidth <= 768 && !isAppInstalled()) {
+    setTimeout(() => {
+        if (installContainer.style.display !== 'block') {
+            const isMobile = /Android|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
+            if (isMobile) {
                 installContainer.style.display = 'block';
             }
-        });
-
-        // --- 2. Click sul pulsante (Android) ---
-        installBtn.addEventListener('click', async () => {
-            if (deferredPrompt) {
-                // Caso Android: mostra il prompt nativo
-                deferredPrompt.prompt();
-                const result = await deferredPrompt.userChoice;
-                if (result.outcome === 'accepted') {
-                    console.log('App installata!');
-                    installContainer.style.display = 'none'; // nascondi dopo installazione
-                } else {
-                    console.log('Utente ha rifiutato');
-                }
-                deferredPrompt = null;
-            } else {
-                // Caso iOS o Android senza beforeinstallprompt
-                // Mostra un messaggio con le istruzioni
-                showIOSInstructions();
-            }
-        });
-
-        // --- 3. Funzione per iOS (Safari) ---
-        function showIOSInstructions() {
-            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-            if (isIOS) {
-                alert(
-                    '📲 Per installare l\'app su iPhone/iPad:\n\n' +
-                    '1. Tocca l\'icona "Condividi" (il quadrato con la freccia in alto) nella barra inferiore di Safari.\n' +
-                    '2. Scorri e seleziona "Aggiungi alla schermata Home".\n' +
-                    '3. Tocca "Aggiungi".\n\n' +
-                    'Così potrai aprire la mappa come una vera app!'
-                );
-            } else {
-                // Altri browser su Android (es. Firefox, Samsung Internet)
-                alert(
-                    '📲 Per installare questa app sul telefono:\n\n' +
-                    'Apri questo link dal browser Chrome e tocca "Installa" o "Aggiungi alla schermata Home".'
-                );
-            }
         }
-
-        // --- 4. Nascondi il pulsante dopo l'installazione (opzionale) ---
-        window.addEventListener('appinstalled', () => {
-            console.log('App installata con successo');
-            installContainer.style.display = 'none';
-        });
-
-        // --- 5. Mostra il pulsante se l'utente è su mobile e non c'è stato l'evento beforeinstallprompt ---
-        // (Utile per iOS o browser che non supportano l'evento)
-        if (window.innerWidth <= 768) {
-            // Aspetta un po' per vedere se beforeinstallprompt viene attivato
-            setTimeout(() => {
-                // Se dopo 3 secondi il pulsante non è stato mostrato (cioè prima era nascosto), mostralo comunque
-                if (installContainer.style.display === 'none' || installContainer.style.display === '') {
-                    // Controlla se siamo su un dispositivo mobile (non desktop)
-                    const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
-                    if (isMobile) {
-                        installContainer.style.display = 'block';
-                    }
-                }
-            }, 3000);
-        }
+    }, 3000);
+}
 </script>
 </body>
 </html>
