@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
-    <link rel="manifest" href="/mappa-bianca-webapp/manifest.json">
     <link rel="manifest" href="/sentieri-nellarte-map/manifest.json">
     <meta name="theme-color" content="#2d5a27">
     <!-- Google tag (gtag.js) -->
@@ -535,8 +534,7 @@
         }
 
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/mappa-bianca-webapp/sw.js')
-                .catch(err => console.error('Errore SW:', err));
+        navigator.serviceWorker.register('/sentieri-nellarte-map/sw.js');
         }
 
         let deferredPrompt;
@@ -556,11 +554,6 @@
                 });
             }
         });
-    </script>
-    <script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sentieri-nellarte-map/sw.js');
-  }
 </script>
 </body>
 </html>
