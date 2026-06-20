@@ -1,6 +1,6 @@
 {
   "name": "Sentieri nell'Arte - Baldo Festival",
-  "short_name": "Sentieri Arte",
+  "short_name": "Sentieri nell'Arte",
   "description": "Mappa interattiva dei sentieri dell'arte al Baldo Festival",
   "start_url": "/sentieri-nellarte-map/",
   "display": "standalone",
