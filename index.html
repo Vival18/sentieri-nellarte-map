@@ -184,17 +184,18 @@
         }
 
         /* ================================= */
+/* ================================= */
 /* PULSANTE INSTALLAZIONE APP */
 /* ================================= */
 #installContainer {
     position: absolute;
     bottom: 80px;
-    right: 10px;
+    left: 10px;          /* ← spostato a sinistra */
     z-index: 1000;
-    pointer-events: none; /* il contenitore non blocca i click sulla mappa */
+    pointer-events: none;
 }
 .install-btn {
-    pointer-events: auto; /* il pulsante è cliccabile */
+    pointer-events: auto;
     background: #2d5a27;
     color: white;
     border: none;
@@ -231,7 +232,7 @@
     }
     #installContainer {
         bottom: 70px;
-        right: 8px;
+        left: 8px;        /* ← allineato a sinistra */
     }
 }
 
@@ -242,7 +243,7 @@
     }
     #installContainer {
         bottom: 60px;
-        right: 6px;
+        left: 6px;        /* ← allineato a sinistra */
     }
 }
         
