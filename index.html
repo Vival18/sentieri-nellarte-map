@@ -182,6 +182,69 @@
             text-decoration: underline;
             color: #ffcc88;
         }
+
+        /* ================================= */
+/* PULSANTE INSTALLAZIONE APP */
+/* ================================= */
+#installContainer {
+    position: absolute;
+    bottom: 80px;
+    right: 10px;
+    z-index: 1000;
+    pointer-events: none; /* il contenitore non blocca i click sulla mappa */
+}
+.install-btn {
+    pointer-events: auto; /* il pulsante è cliccabile */
+    background: #2d5a27;
+    color: white;
+    border: none;
+    border-radius: 40px;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+.install-btn:hover {
+    background: #1e3f1a;
+    transform: scale(1.02);
+}
+.install-btn:active {
+    transform: scale(0.95);
+}
+
+/* Nascondi su desktop (schermi larghi) */
+@media (min-width: 769px) {
+    #installContainer {
+        display: none !important;
+    }
+}
+
+/* Adattamento su mobile piccolo */
+@media (max-width: 600px) {
+    .install-btn {
+        padding: 8px 12px;
+        font-size: 11px;
+        border-radius: 30px;
+    }
+    #installContainer {
+        bottom: 70px;
+        right: 8px;
+    }
+}
+
+@media (max-width: 370px) {
+    .install-btn {
+        padding: 6px 10px;
+        font-size: 10px;
+    }
+    #installContainer {
+        bottom: 60px;
+        right: 6px;
+    }
+}
         
 /* ================================= */
 /* REGOLE PER SMARTPHONE (max-width: 600px) */
@@ -320,6 +383,12 @@
     <div id="map"></div>
     <div class="workinprogress">
         🔧 Lavori in corso – Questa è un'anteprima. Contenuti in arrivo.
+    </div>
+    <!-- Pulsante di installazione della PWA (visibile solo su mobile) -->
+    <div id="installContainer" style="display: none;">
+        <button id="installAppBtn" class="install-btn">
+            📲 Installa l'app
+        </button>
     </div>
     <div class="filter-bar" id="filterBar"></div>
     <div class="locate-container">
@@ -600,23 +669,84 @@ function initMap() {
         navigator.serviceWorker.register('/sentieri-nellarte-map/sw.js');
         }
 
-        let deferredPrompt;
+        // ========================
+        // INSTALLAZIONE PWA
+        // ========================
+        const installContainer = document.getElementById('installContainer');
+        const installBtn = document.getElementById('installAppBtn');
+        let deferredPrompt = null;
+
+        // --- 1. Rilevamento su Android (Chrome) ---
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
-            const installBtn = document.getElementById('installBtn');
-            if (installBtn) {
-                installBtn.style.display = 'block';
-                installBtn.addEventListener('click', () => {
-                    installBtn.style.display = 'none';
-                    deferredPrompt.prompt();
-                    deferredPrompt.userChoice.then((choiceResult) => {
-                        if (choiceResult.outcome === 'accepted') console.log('Utente ha accettato');
-                        deferredPrompt = null;
-                    });
-                });
+            // Mostra il pulsante solo su mobile (schermo < 768px)
+            if (window.innerWidth <= 768) {
+                installContainer.style.display = 'block';
             }
         });
+
+        // --- 2. Click sul pulsante (Android) ---
+        installBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                // Caso Android: mostra il prompt nativo
+                deferredPrompt.prompt();
+                const result = await deferredPrompt.userChoice;
+                if (result.outcome === 'accepted') {
+                    console.log('App installata!');
+                    installContainer.style.display = 'none'; // nascondi dopo installazione
+                } else {
+                    console.log('Utente ha rifiutato');
+                }
+                deferredPrompt = null;
+            } else {
+                // Caso iOS o Android senza beforeinstallprompt
+                // Mostra un messaggio con le istruzioni
+                showIOSInstructions();
+            }
+        });
+
+        // --- 3. Funzione per iOS (Safari) ---
+        function showIOSInstructions() {
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+            if (isIOS) {
+                alert(
+                    '📲 Per installare l\'app su iPhone/iPad:\n\n' +
+                    '1. Tocca l\'icona "Condividi" (il quadrato con la freccia in alto) nella barra inferiore di Safari.\n' +
+                    '2. Scorri e seleziona "Aggiungi alla schermata Home".\n' +
+                    '3. Tocca "Aggiungi".\n\n' +
+                    'Così potrai aprire la mappa come una vera app!'
+                );
+            } else {
+                // Altri browser su Android (es. Firefox, Samsung Internet)
+                alert(
+                    '📲 Per installare questa app sul telefono:\n\n' +
+                    'Apri questo link dal browser Chrome e tocca "Installa" o "Aggiungi alla schermata Home".'
+                );
+            }
+        }
+
+        // --- 4. Nascondi il pulsante dopo l'installazione (opzionale) ---
+        window.addEventListener('appinstalled', () => {
+            console.log('App installata con successo');
+            installContainer.style.display = 'none';
+        });
+
+        // --- 5. Mostra il pulsante se l'utente è su mobile e non c'è stato l'evento beforeinstallprompt ---
+        // (Utile per iOS o browser che non supportano l'evento)
+        if (window.innerWidth <= 768) {
+            // Aspetta un po' per vedere se beforeinstallprompt viene attivato
+            setTimeout(() => {
+                // Se dopo 3 secondi il pulsante non è stato mostrato (cioè prima era nascosto), mostralo comunque
+                if (installContainer.style.display === 'none' || installContainer.style.display === '') {
+                    // Controlla se siamo su un dispositivo mobile (non desktop)
+                    const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+                    if (isMobile) {
+                        installContainer.style.display = 'block';
+                    }
+                }
+            }, 3000);
+        }
 </script>
 </body>
 </html>
