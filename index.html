@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Sentieri nell’Arte – Baldo Festival</title>
+    <title>Sentieri nell'Arte – Baldo Festival</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
@@ -372,7 +372,8 @@
 <body>
     <div id="map"></div>
     <div class="workinprogress">
-        🔧 Mappa in fase di aggiornamento con nuovi punti di interesse. Per informazioni o collaborazioni, contattaci.
+        🔧 Mappa in fase di aggiornamento con nuovi punti di interesse. <br>
+        Per informazioni o collaborazioni, contattaci.
     </div>
     <div id="installContainer" style="display: none;">
         <button id="installAppBtn" class="install-btn">
@@ -385,9 +386,7 @@
     </div>
     <div class="legend" id="legend"></div>
     <div class="counter" id="counter">Caricamento...</div>
-    <div class="offline-msg" id="offlineMsg">⚠️ Mappa in fase di aggiornamento con nuovi punti di interesse. Per informazioni
-        o collaborazioni, contattaci.
-    </div>
+    <div class="offline-msg" id="offlineMsg">⚠️ Mappa offline. Alcune funzionalità potrebbero non essere disponibili.</div>
     <div class="mappa-bianca-credit">
         Powered by <strong>Mappa Bianca</strong> | <a href="https://vival18.github.io/mappa-bianca/" target="_blank" rel="noopener noreferrer">Scopri di più</a>
     </div>
@@ -405,19 +404,15 @@
         let currentFilter = 'Tutti';
         let parkingMarker = null; // per tenere traccia del marker parcheggio
 
-        // Mappa colori con la nuova categoria PARCHEGGIO
+        // Mappa colori
         const colorMap = {
             'opera': '#e31a23',
-            'servizio': '#1e90ff',
-            'storico': '#ff8c00',
-            'parcheggio': '#2ecc71'  // VERDE per il parcheggio
+            'storico': '#ff8c00'
         };
 
         const categoryNames = {
             'opera': 'Opere',
-            'servizio': 'Servizi',
-            'storico': 'Punti storici',
-            'parcheggio': 'Parcheggio'
+            'storico': 'Punti storici'
         };
 
         // ========================
@@ -435,10 +430,10 @@
         // Icona personalizzata per il parcheggio (con "P" bianca)
         function getParkingIcon() {
             return L.divIcon({
-                html: `<div style="background-color: #2ecc71; width: 28px; height: 28px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 4px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 16px; font-family: 'Segoe UI', sans-serif;">P</div>`,
-                iconSize: [28, 28],
+                html: `<div style="background-color: #2ecc71; width: 32px; height: 32px; border-radius: 50%; border: 3px solid white; box-shadow: 0 0 8px rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 18px; font-family: 'Segoe UI', sans-serif;">P</div>`,
+                iconSize: [32, 32],
                 className: 'parking-marker',
-                popupAnchor: [0, -14]
+                popupAnchor: [0, -16]
             });
         }
 
@@ -447,6 +442,11 @@
                 center: [45.620474, 10.829623],
                 zoom: 15
             });
+            
+            // CREA UN PANE DEDICATO PER IL PARCHEGGIO (con z-index alto)
+            // Il pane 'parkingPane' viene creato prima dei tile e dei cluster
+            const parkingPane = map.createPane('parkingPane');
+            parkingPane.style.zIndex = 650; // più alto del default dei marker (400) e dei cluster
             
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -511,9 +511,7 @@
                 let match = false;
                 if (category === 'Tutti') match = true;
                 else if (category === 'Opere' && item.tipologia === 'opera') match = true;
-                else if (category === 'Servizi' && item.tipologia === 'servizio') match = true;
                 else if (category === 'Punti Storici' && item.tipologia === 'storico') match = true;
-                else if (category === 'Parcheggio' && item.tipologia === 'parcheggio') match = true;
                 if (match) markerClusterGroup.addLayer(item.marker);
             });
             updateCounter();
@@ -522,7 +520,8 @@
         function buildFilters() {
             const filterDiv = document.getElementById('filterBar');
             filterDiv.innerHTML = '';
-            const buttons = ['Tutti', 'Opere', 'Servizi', 'Punti Storici', 'Parcheggio'];
+            // FILTRI: solo Tutti, Opere, Punti Storici (rimossi Servizi e Parcheggio)
+            const buttons = ['Tutti', 'Opere', 'Punti Storici'];
             buttons.forEach(cat => {
                 const btn = document.createElement('button');
                 btn.textContent = cat;
@@ -544,7 +543,8 @@
                 legendDiv.innerHTML += '<span style="background-color:red;"></span> Sentiero<br>';
                 return;
             }
-            const order = ['opera', 'servizio', 'storico', 'parcheggio'];
+            // Ordine: opere, storici, parcheggio (sempre presente)
+            const order = ['opera', 'storico'];
             order.forEach(cat => {
                 if (uniqueTypes.includes(cat)) {
                     let color = colorMap[cat];
@@ -552,6 +552,8 @@
                     legendDiv.innerHTML += `<span style="background-color: ${color};"></span> ${label}<br>`;
                 }
             });
+            // Aggiungi sempre il parcheggio e il sentiero
+            legendDiv.innerHTML += `<span style="background-color: #2ecc71;"></span> Parcheggio<br>`;
             legendDiv.innerHTML += '<span style="background-color:red; border-radius: 4px; width:16px; height:4px;"></span> Sentiero<br>';
         }
 
@@ -639,7 +641,6 @@
                 data.forEach(m => {
                     let tipologia = m.tipologia;
                     if (tipologia === 'opera' || tipologia === 'opere') tipologia = 'opera';
-                    else if (tipologia === 'servizio' || tipologia === 'servizi') tipologia = 'servizio';
                     else if (tipologia === 'storico' || tipologia === 'Punti storici') tipologia = 'storico';
                     else if (tipologia === 'parcheggio' || tipologia === 'Parcheggio') tipologia = 'parcheggio';
                     else tipologia = 'opera';
@@ -655,13 +656,14 @@
                     const tipologia = m.tipologiaNorm;
                     
                     // SE È UN PARCHEGGIO: crea marker con icona personalizzata, NON nel cluster
+                    // e viene aggiunto al pane dedicato 'parkingPane' per stare SOPRA i cluster
                     if (tipologia === 'parcheggio') {
                         const icon = getParkingIcon();
                         
                         // Costruisce popup con il pulsante Google Maps
                         let popupContent = `
                             <strong>${escapeHtml(m.title)}</strong><br>
-                            <em>Tipologia:</em> ${categoryNames[tipologia] || tipologia}<br>
+                            <em>Tipologia:</em> Parcheggio<br>
                             ${m.thumbnail ? `<img src="${escapeHtml(m.thumbnail)}" style="width:100px; max-width:100%; margin-top:5px; border-radius:4px;"><br>` : ''}
                             <p>${escapeHtml(m.excerpt || (m.content ? m.content.substring(0,150) : ''))}</p>
                         `;
@@ -671,13 +673,18 @@
                             popupContent += `<br><a href="${escapeHtml(m.google_maps_url)}" target="_blank" style="display:inline-block; background:#4285f4; color:white; padding:6px 14px; border-radius:30px; text-decoration:none; font-weight:bold; margin-top:8px; font-size:14px;">📍 Naviga al parcheggio</a>`;
                         }
                         
-                        const marker = L.marker([lat, lng], { icon }).bindPopup(popupContent);
-                        marker.addTo(map); // Aggiunge DIRETTAMENTE alla mappa (NON al cluster)
+                        // IMPORTANTE: aggiungi il marker al pane dedicato
+                        const marker = L.marker([lat, lng], { 
+                            icon: icon,
+                            pane: 'parkingPane'  // <-- CHIAVE: usa il pane con z-index alto
+                        }).bindPopup(popupContent);
+                        
+                        marker.addTo(map);
                         parkingMarker = marker; // salva riferimento
                         return; // esce dal forEach per questo elemento
                     }
                     
-                    // TUTTI GLI ALTRI MARKER (opera, servizio, storico): vanno nel cluster
+                    // TUTTI GLI ALTRI MARKER (opera, storico): vanno nel cluster
                     const color = colorMap[tipologia] || '#cccccc';
                     const icon = getColoredIcon(color);
                     
