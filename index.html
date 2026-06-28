@@ -184,208 +184,196 @@
         }
 
         /* ================================= */
-/* ================================= */
-/* PULSANTE INSTALLAZIONE APP */
-/* ================================= */
-#installContainer {
-    position: absolute;
-    bottom: 1000px;
-    left: 10px;          /* ← spostato a sinistra */
-    z-index: 1000;
-    pointer-events: none;
-}
-.install-btn {
-    pointer-events: auto;
-    background: #2d5a27;
-    color: white;
-    border: none;
-    border-radius: 40px;
-    padding: 10px 16px;
-    font-size: 13px;
-    font-weight: bold;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    cursor: pointer;
-    transition: all 0.2s;
-    white-space: nowrap;
-}
-.install-btn:hover {
-    background: #1e3f1a;
-    transform: scale(1.02);
-}
-.install-btn:active {
-    transform: scale(0.95);
-}
+        /* PULSANTE INSTALLAZIONE APP */
+        /* ================================= */
+        #installContainer {
+            position: absolute;
+            bottom: 1000px;
+            left: 10px;
+            z-index: 1000;
+            pointer-events: none;
+        }
+        .install-btn {
+            pointer-events: auto;
+            background: #2d5a27;
+            color: white;
+            border: none;
+            border-radius: 40px;
+            padding: 10px 16px;
+            font-size: 13px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .install-btn:hover {
+            background: #1e3f1a;
+            transform: scale(1.02);
+        }
+        .install-btn:active {
+            transform: scale(0.95);
+        }
 
-/* Nascondi su desktop (schermi larghi) */
-@media (min-width: 769px) {
-    #installContainer {
-        display: none !important;
-    }
-}
+        @media (min-width: 769px) {
+            #installContainer {
+                display: none !important;
+            }
+        }
 
-/* Adattamento su mobile piccolo */
-@media (max-width: 600px) {
-    .install-btn {
-        padding: 8px 12px;
-        font-size: 11px;
-        border-radius: 30px;
-    }
-    #installContainer {
-        bottom: 90px;
-        left: 8px;        /* ← allineato a sinistra */
-    }
-}
+        @media (max-width: 600px) {
+            .install-btn {
+                padding: 8px 12px;
+                font-size: 11px;
+                border-radius: 30px;
+            }
+            #installContainer {
+                bottom: 90px;
+                left: 8px;
+            }
+        }
 
-@media (max-width: 370px) {
-    .install-btn {
-        padding: 6px 10px;
-        font-size: 10px;
-    }
-    #installContainer {
-        bottom: 90px;
-        left: 6px;        /* ← allineato a sinistra */
-    }
-}
+        @media (max-width: 370px) {
+            .install-btn {
+                padding: 6px 10px;
+                font-size: 10px;
+            }
+            #installContainer {
+                bottom: 90px;
+                left: 6px;
+            }
+        }
         
-/* ================================= */
-/* REGOLE PER SMARTPHONE (max-width: 600px) */
-/* ================================= */
-@media (max-width: 600px) {
-    /* Barra filtri più compatta e spostata a destra */
-    .filter-bar {
-        top: 10px;
-        right: 10px;
-        padding: 4px 6px;
-        gap: 3px;
-        max-width: calc(100% - 140px);
-        background: rgba(255,255,255,0.92);
-        border-radius: 30px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        flex-wrap: nowrap;  /* impedisce il wrap su due righe */
-        overflow-x: auto;   /* se troppo lunghi, scrollano orizzontalmente */
-        -webkit-overflow-scrolling: touch;
-    }
-    .filter-btn {
-        padding: 3px 8px;
-        font-size: 10px;
-        white-space: nowrap;
-        border-radius: 20px;
-        flex-shrink: 0;
-    }
+        /* ================================= */
+        /* REGOLE PER SMARTPHONE (max-width: 600px) */
+        /* ================================= */
+        @media (max-width: 600px) {
+            .filter-bar {
+                top: 10px;
+                right: 10px;
+                padding: 4px 6px;
+                gap: 3px;
+                max-width: calc(100% - 140px);
+                background: rgba(255,255,255,0.92);
+                border-radius: 30px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            .filter-btn {
+                padding: 3px 8px;
+                font-size: 10px;
+                white-space: nowrap;
+                border-radius: 20px;
+                flex-shrink: 0;
+            }
 
-    /* Pulsante geolocalizzazione più piccolo e più in basso */
-    .locate-container {
-        top: 12px;
-        left: 10px;
-        z-index: 1000;
-    }
-    .locate-btn {
-        padding: 4px 8px;
-        font-size: 11px;
-        border-radius: 20px;
-        background: #4caf50;
-        color: white;
-        border: none;
-        font-weight: bold;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    }
+            .locate-container {
+                top: 12px;
+                left: 10px;
+                z-index: 1000;
+            }
+            .locate-btn {
+                padding: 4px 8px;
+                font-size: 11px;
+                border-radius: 20px;
+                background: #4caf50;
+                color: white;
+                border: none;
+                font-weight: bold;
+                box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            }
 
-    /* Nascondi i controlli zoom di Leaflet su mobile (opzionale) */
-    .leaflet-control-zoom {
-        display: none !important;
-    }
+            .leaflet-control-zoom {
+                display: none !important;
+            }
 
-    /* Nascondi il contatore */
-    .counter {
-        display: none;
-    }
+            .counter {
+                display: none;
+            }
 
-    /* Legenda più in alto per evitare sovrapposizioni */
-    .legend {
-        font-size: 10px;
-        bottom: 80px;
-        right: 10px;
-        padding: 6px 10px;
-        background: rgba(255,255,255,0.85);
-        border-radius: 10px;
-    }
+            .legend {
+                font-size: 10px;
+                bottom: 80px;
+                right: 10px;
+                padding: 6px 10px;
+                background: rgba(255,255,255,0.85);
+                border-radius: 10px;
+            }
 
-    .offline-msg {
-        top: 70px;
-        font-size: 10px;
-        white-space: nowrap;
-    }
+            .offline-msg {
+                top: 70px;
+                font-size: 10px;
+                white-space: nowrap;
+            }
 
-    .workinprogress {
-        bottom: 60px;
-        font-size: 10px;
-        padding: 4px 12px;
-        white-space: nowrap;
-    }
+            .workinprogress {
+                bottom: 60px;
+                font-size: 10px;
+                padding: 4px 12px;
+                white-space: nowrap;
+            }
 
-    .mappa-bianca-credit {
-        font-size: 9px;
-        padding: 3px 10px;
-        bottom: 20px;
-        white-space: nowrap;
-    }
-}
+            .mappa-bianca-credit {
+                font-size: 9px;
+                padding: 3px 10px;
+                bottom: 20px;
+                white-space: nowrap;
+            }
+        }
 
-/* ================================= */
-/* REGOLE PER SMARTPHONE MOLTO PICCOLI (max-width: 370px) */
-/* ================================= */
-@media (max-width: 370px) {
-    .filter-bar {
-        max-width: calc(100% - 100px);  /* ancora più stretto */
-        padding: 3px 4px;
-        gap: 2px;
-        top: 8px;
-        right: 8px;
-    }
-    .filter-btn {
-        padding: 2px 6px;
-        font-size: 9px;
-        border-radius: 16px;
-    }
+        @media (max-width: 370px) {
+            .filter-bar {
+                max-width: calc(100% - 100px);
+                padding: 3px 4px;
+                gap: 2px;
+                top: 8px;
+                right: 8px;
+            }
+            .filter-btn {
+                padding: 2px 6px;
+                font-size: 9px;
+                border-radius: 16px;
+            }
 
-    .locate-container {
-        top: 8px;
-        left: 6px;
-    }
-    .locate-btn {
-        padding: 3px 6px;
-        font-size: 10px;
-        border-radius: 16px;
-    }
+            .locate-container {
+                top: 8px;
+                left: 6px;
+            }
+            .locate-btn {
+                padding: 3px 6px;
+                font-size: 10px;
+                border-radius: 16px;
+            }
 
-    .workinprogress {
-        font-size: 8px;
-        padding: 3px 10px;
-        bottom: 50px;
-        white-space: nowrap;
-    }
+            .workinprogress {
+                font-size: 8px;
+                padding: 3px 10px;
+                bottom: 50px;
+                white-space: nowrap;
+            }
 
-    .legend {
-        font-size: 9px;
-        bottom: 70px;
-        right: 6px;
-        padding: 4px 8px;
-    }
+            .legend {
+                font-size: 9px;
+                bottom: 70px;
+                right: 6px;
+                padding: 4px 8px;
+            }
 
-    .mappa-bianca-credit {
-        font-size: 8px;
-        padding: 2px 8px;
-        bottom: 16px;
-    }
-}
+            .mappa-bianca-credit {
+                font-size: 8px;
+                padding: 2px 8px;
+                bottom: 16px;
+            }
+        }
     </style>
 </head>
 <body>
     <div id="map"></div>
     <div class="workinprogress">
-        🔧 Lavori in corso – Questa è un'anteprima. Contenuti in arrivo.
+        🔧 Mappa in fase di aggiornamento con nuovi punti di interesse. Per informazioni o collaborazioni, contattaci.
     </div>
-    <!-- Pulsante di installazione della PWA (visibile solo su mobile) -->
     <div id="installContainer" style="display: none;">
         <button id="installAppBtn" class="install-btn">
             📲 Installa l'app
@@ -397,7 +385,9 @@
     </div>
     <div class="legend" id="legend"></div>
     <div class="counter" id="counter">Caricamento...</div>
-    <div class="offline-msg" id="offlineMsg">⚠️ Modalità offline – alcune aree potrebbero non essere visibili</div>
+    <div class="offline-msg" id="offlineMsg">⚠️ Mappa in fase di aggiornamento con nuovi punti di interesse. Per informazioni
+        o collaborazioni, contattaci.
+    </div>
     <div class="mappa-bianca-credit">
         Powered by <strong>Mappa Bianca</strong> | <a href="https://vival18.github.io/mappa-bianca/" target="_blank" rel="noopener noreferrer">Scopri di più</a>
     </div>
@@ -413,17 +403,21 @@
         let markerClusterGroup;
         let allMarkers = [];
         let currentFilter = 'Tutti';
+        let parkingMarker = null; // per tenere traccia del marker parcheggio
 
+        // Mappa colori con la nuova categoria PARCHEGGIO
         const colorMap = {
             'opera': '#e31a23',
             'servizio': '#1e90ff',
-            'storico': '#ff8c00'
+            'storico': '#ff8c00',
+            'parcheggio': '#2ecc71'  // VERDE per il parcheggio
         };
 
         const categoryNames = {
             'opera': 'Opere',
             'servizio': 'Servizi',
-            'storico': 'Punti storici'
+            'storico': 'Punti storici',
+            'parcheggio': 'Parcheggio'
         };
 
         // ========================
@@ -438,30 +432,38 @@
             });
         }
 
-function initMap() {
-    map = L.map('map', {
-        center: [45.620474, 10.829623],
-        zoom: 15
-    });
-    
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);
-    
-    // Nessun localStorage, nessun ripristino
-    
-    // Eventuale debug
-    map.on('click', function(e) {
-        console.log(`📍 [${e.latlng.lat.toFixed(6)}, ${e.latlng.lng.toFixed(6)}]`);
-    });
-    
-    markerClusterGroup = L.markerClusterGroup({
-        showCoverageOnHover: false,
-        maxClusterRadius: 80,
-        disableClusteringAtZoom: 18
-    });
-    map.addLayer(markerClusterGroup);
-}
+        // Icona personalizzata per il parcheggio (con "P" bianca)
+        function getParkingIcon() {
+            return L.divIcon({
+                html: `<div style="background-color: #2ecc71; width: 28px; height: 28px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 4px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 16px; font-family: 'Segoe UI', sans-serif;">P</div>`,
+                iconSize: [28, 28],
+                className: 'parking-marker',
+                popupAnchor: [0, -14]
+            });
+        }
+
+        function initMap() {
+            map = L.map('map', {
+                center: [45.620474, 10.829623],
+                zoom: 15
+            });
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
+            
+            // Debug coordinate (solo console)
+            map.on('click', function(e) {
+                console.log(`📍 [${e.latlng.lat.toFixed(6)}, ${e.latlng.lng.toFixed(6)}]`);
+            });
+            
+            markerClusterGroup = L.markerClusterGroup({
+                showCoverageOnHover: false,
+                maxClusterRadius: 80,
+                disableClusteringAtZoom: 18
+            });
+            map.addLayer(markerClusterGroup);
+        }
 
         function addSentieroFromGeoJSON() {
             fetch('./mappaturasentieroarte.geojson')
@@ -498,12 +500,20 @@ function initMap() {
         function filterMarkers(category) {
             currentFilter = category;
             markerClusterGroup.clearLayers();
+            
+            // Il parcheggio è SEMPRE visibile (non viene influenzato dai filtri)
+            // Quindi lo aggiungiamo comunque alla mappa se esiste
+            if (parkingMarker) {
+                // Non facciamo nulla: è già sulla mappa
+            }
+            
             allMarkers.forEach(item => {
                 let match = false;
                 if (category === 'Tutti') match = true;
                 else if (category === 'Opere' && item.tipologia === 'opera') match = true;
                 else if (category === 'Servizi' && item.tipologia === 'servizio') match = true;
                 else if (category === 'Punti Storici' && item.tipologia === 'storico') match = true;
+                else if (category === 'Parcheggio' && item.tipologia === 'parcheggio') match = true;
                 if (match) markerClusterGroup.addLayer(item.marker);
             });
             updateCounter();
@@ -512,7 +522,7 @@ function initMap() {
         function buildFilters() {
             const filterDiv = document.getElementById('filterBar');
             filterDiv.innerHTML = '';
-            const buttons = ['Tutti', 'Opere', 'Servizi', 'Punti Storici'];
+            const buttons = ['Tutti', 'Opere', 'Servizi', 'Punti Storici', 'Parcheggio'];
             buttons.forEach(cat => {
                 const btn = document.createElement('button');
                 btn.textContent = cat;
@@ -534,10 +544,12 @@ function initMap() {
                 legendDiv.innerHTML += '<span style="background-color:red;"></span> Sentiero<br>';
                 return;
             }
-            const order = ['opera', 'servizio', 'storico'];
+            const order = ['opera', 'servizio', 'storico', 'parcheggio'];
             order.forEach(cat => {
                 if (uniqueTypes.includes(cat)) {
-                    legendDiv.innerHTML += `<span style="background-color: ${colorMap[cat]};"></span> ${categoryNames[cat]}<br>`;
+                    let color = colorMap[cat];
+                    let label = categoryNames[cat];
+                    legendDiv.innerHTML += `<span style="background-color: ${color};"></span> ${label}<br>`;
                 }
             });
             legendDiv.innerHTML += '<span style="background-color:red; border-radius: 4px; width:16px; height:4px;"></span> Sentiero<br>';
@@ -596,7 +608,7 @@ function initMap() {
                     locateBtn.disabled = false;
                     onLocationError(error);
                 },
-                { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+                { enableHighAccuracy: true, timeout: 30000, maximumAge: 60000 }
             );
         });
 
@@ -622,11 +634,14 @@ function initMap() {
             .then(data => {
                 if (!data.length) throw new Error('Nessun marker');
                 const typesSet = new Set();
+                
+                // Normalizzazione tipologie
                 data.forEach(m => {
                     let tipologia = m.tipologia;
                     if (tipologia === 'opera' || tipologia === 'opere') tipologia = 'opera';
                     else if (tipologia === 'servizio' || tipologia === 'servizi') tipologia = 'servizio';
                     else if (tipologia === 'storico' || tipologia === 'Punti storici') tipologia = 'storico';
+                    else if (tipologia === 'parcheggio' || tipologia === 'Parcheggio') tipologia = 'parcheggio';
                     else tipologia = 'opera';
                     m.tipologiaNorm = tipologia;
                     typesSet.add(tipologia);
@@ -638,14 +653,46 @@ function initMap() {
                     const lng = parseFloat(m.lng);
                     if (isNaN(lat) || isNaN(lng)) return;
                     const tipologia = m.tipologiaNorm;
+                    
+                    // SE È UN PARCHEGGIO: crea marker con icona personalizzata, NON nel cluster
+                    if (tipologia === 'parcheggio') {
+                        const icon = getParkingIcon();
+                        
+                        // Costruisce popup con il pulsante Google Maps
+                        let popupContent = `
+                            <strong>${escapeHtml(m.title)}</strong><br>
+                            <em>Tipologia:</em> ${categoryNames[tipologia] || tipologia}<br>
+                            ${m.thumbnail ? `<img src="${escapeHtml(m.thumbnail)}" style="width:100px; max-width:100%; margin-top:5px; border-radius:4px;"><br>` : ''}
+                            <p>${escapeHtml(m.excerpt || (m.content ? m.content.substring(0,150) : ''))}</p>
+                        `;
+                        
+                        // Aggiunge il pulsante "Naviga al parcheggio" se esiste google_maps_url
+                        if (m.google_maps_url) {
+                            popupContent += `<br><a href="${escapeHtml(m.google_maps_url)}" target="_blank" style="display:inline-block; background:#4285f4; color:white; padding:6px 14px; border-radius:30px; text-decoration:none; font-weight:bold; margin-top:8px; font-size:14px;">📍 Naviga al parcheggio</a>`;
+                        }
+                        
+                        const marker = L.marker([lat, lng], { icon }).bindPopup(popupContent);
+                        marker.addTo(map); // Aggiunge DIRETTAMENTE alla mappa (NON al cluster)
+                        parkingMarker = marker; // salva riferimento
+                        return; // esce dal forEach per questo elemento
+                    }
+                    
+                    // TUTTI GLI ALTRI MARKER (opera, servizio, storico): vanno nel cluster
                     const color = colorMap[tipologia] || '#cccccc';
                     const icon = getColoredIcon(color);
-                    const popupContent = `
+                    
+                    let popupContent = `
                         <strong>${escapeHtml(m.title)}</strong><br>
                         <em>Tipologia:</em> ${categoryNames[tipologia] || tipologia}<br>
                         ${m.thumbnail ? `<img src="${escapeHtml(m.thumbnail)}" style="width:100px; max-width:100%; margin-top:5px; border-radius:4px;"><br>` : ''}
-                        <p>${escapeHtml(m.excerpt || (m.content ? m.content.substring(0,150) : ''))}...</p>
+                        <p>${escapeHtml(m.excerpt || (m.content ? m.content.substring(0,150) : ''))}</p>
                     `;
+                    
+                    // Se per caso anche altri marker hanno google_maps_url (utile per servizi)
+                    if (m.google_maps_url) {
+                        popupContent += `<br><a href="${escapeHtml(m.google_maps_url)}" target="_blank" style="display:inline-block; background:#4285f4; color:white; padding:6px 14px; border-radius:30px; text-decoration:none; font-weight:bold; margin-top:8px; font-size:14px;">📍 Apri in Google Maps</a>`;
+                    }
+                    
                     const marker = L.marker([lat, lng], { icon }).bindPopup(popupContent);
                     allMarkers.push({ marker, tipologia });
                 });
@@ -667,83 +714,76 @@ function initMap() {
         }
 
         if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/sentieri-nellarte-map/sw.js');
+            navigator.serviceWorker.register('/sentieri-nellarte-map/sw.js');
         }
 
-// ========================
-// INSTALLAZIONE PWA
-// ========================
-const installContainer = document.getElementById('installContainer');
-const installBtn = document.getElementById('installAppBtn');
-let deferredPrompt = null;
+        // ========================
+        // INSTALLAZIONE PWA
+        // ========================
+        const installContainer = document.getElementById('installContainer');
+        const installBtn = document.getElementById('installAppBtn');
+        let deferredPrompt = null;
 
-// --- 1. Controllo se l'app è già installata ---
-function isAppInstalled() {
-    if (window.matchMedia('(display-mode: standalone)').matches) return true;
-    if (window.navigator.standalone === true) return true;
-    return false;
-}
+        function isAppInstalled() {
+            if (window.matchMedia('(display-mode: standalone)').matches) return true;
+            if (window.navigator.standalone === true) return true;
+            return false;
+        }
 
-if (isAppInstalled()) {
-    installContainer.style.display = 'none';
-}
-
-// --- 2. Evento beforeinstallprompt ---
-window.addEventListener('beforeinstallprompt', (e) => {
-    if (isAppInstalled()) return;
-    e.preventDefault();
-    deferredPrompt = e;
-    if (window.innerWidth <= 768) {
-        installContainer.style.display = 'block';
-    }
-});
-
-// --- 3. Click sul pulsante ---
-installBtn.addEventListener('click', async () => {
-    if (deferredPrompt) {
-        deferredPrompt.prompt();
-        const result = await deferredPrompt.userChoice;
-        if (result.outcome === 'accepted') {
+        if (isAppInstalled()) {
             installContainer.style.display = 'none';
         }
-        deferredPrompt = null;
-    } else {
-        // iOS o browser senza supporto
-        showIOSInstructions();
-    }
-});
 
-// --- 4. App installata con successo ---
-window.addEventListener('appinstalled', () => {
-    installContainer.style.display = 'none';
-    deferredPrompt = null;
-});
-
-// --- 5. Istruzioni per iOS ---
-function showIOSInstructions() {
-    if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
-        alert(
-            '📲 Per installare l\'app su iPhone/iPad:\n\n' +
-            '1. Tocca l\'icona "Condividi" (quadrato con freccia).\n' +
-            '2. Scorri e seleziona "Aggiungi alla schermata Home".\n' +
-            '3. Tocca "Aggiungi".'
-        );
-    } else {
-        alert('Apri questo link da Chrome e tocca "Installa" per aggiungere alla home.');
-    }
-}
-
-// --- 6. Mostra il pulsante se su mobile ma beforeinstallprompt non si attiva ---
-if (window.innerWidth <= 768 && !isAppInstalled()) {
-    setTimeout(() => {
-        if (installContainer.style.display !== 'block') {
-            const isMobile = /Android|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
-            if (isMobile) {
+        window.addEventListener('beforeinstallprompt', (e) => {
+            if (isAppInstalled()) return;
+            e.preventDefault();
+            deferredPrompt = e;
+            if (window.innerWidth <= 768) {
                 installContainer.style.display = 'block';
             }
+        });
+
+        installBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const result = await deferredPrompt.userChoice;
+                if (result.outcome === 'accepted') {
+                    installContainer.style.display = 'none';
+                }
+                deferredPrompt = null;
+            } else {
+                showIOSInstructions();
+            }
+        });
+
+        window.addEventListener('appinstalled', () => {
+            installContainer.style.display = 'none';
+            deferredPrompt = null;
+        });
+
+        function showIOSInstructions() {
+            if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+                alert(
+                    '📲 Per installare l\'app su iPhone/iPad:\n\n' +
+                    '1. Tocca l\'icona "Condividi" (quadrato con freccia).\n' +
+                    '2. Scorri e seleziona "Aggiungi alla schermata Home".\n' +
+                    '3. Tocca "Aggiungi".'
+                );
+            } else {
+                alert('Apri questo link da Chrome e tocca "Installa" per aggiungere alla home.');
+            }
         }
-    }, 3000);
-}
-</script>
+
+        if (window.innerWidth <= 768 && !isAppInstalled()) {
+            setTimeout(() => {
+                if (installContainer.style.display !== 'block') {
+                    const isMobile = /Android|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
+                    if (isMobile) {
+                        installContainer.style.display = 'block';
+                    }
+                }
+            }, 3000);
+        }
+    </script>
 </body>
 </html>

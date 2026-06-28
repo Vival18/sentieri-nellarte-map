@@ -29,46 +29,47 @@
     {
         "title": "Fontana di Pazzon",
         "content": "",
-        "excerpt": "",
+        "excerpt": "Imponente fontana in marmo rosso Verona, scavata in un unico blocco di pietra, situata nella piazza di Pazzon. Questo antico manufatto è un punto di riferimento per gli escursionisti che percorrono le 'Vie dell'Acqua' e il punto di partenza per il sentiero che conduce alla suggestiva Valle del Tasso. Dalla piazza si gode di un ampio panorama sulla vallata di Caprino e sul Monte Baldo.",
         "lat": "45.61867687782041",
         "lng": "10.8250107031088",
-        "thumbnail": false,
+        "thumbnail": "images/fontanaPazzon2.webp",
         "tipologia": "storico"
     },
     {
         "title": "Lavatoio di Porcino",
         "content": "",
-        "excerpt": "",
+        "excerpt": "Abbeveratoio e lavatoio pubblico, costruito nel 1871 in pietra locale. Il lavatoio presenta quattro vasche. L'acqua conclude il percorso nel sottostante Torrente Tasso.",
         "lat": "45.61706003089321",
         "lng": "10.828864576103808",
-        "thumbnail": false,    
+        "thumbnail": "images/lavatoioPorcino.webp",
         "tipologia": "storico"
     },
     {
         "title": "Lavatoio di Pazzon",
         "content": "",
-        "excerpt": "",
+        "excerpt": "Antico e grande lavatoio in marmo, situato lungo il sentiero che dalla piazza di Pazzon scende verso il torrente Tasso. Questo luogo è una tappa caratteristica del percorso verso la Val del Tasso, un punto di sosta che racconta la storia rurale di questi luoghi.",
         "lat": "45.619656137107775",
         "lng": "10.82704951674641",
-        "thumbnail": false,
+        "thumbnail": "images/lavatoioPazzon.webp",
         "tipologia": "storico"
     },
-    {
-        "title": "Parcheggio",
-        "content": "",
-        "excerpt": "",
-        "lat": "45.61924045194073",
-        "lng": "10.824523648758404",
-        "thumbnail": false,
-        "tipologia": "servizio"
-    },
+{
+    "title": "Parcheggio",
+    "content": "",
+    "excerpt": "Parcheggio gratuito vicino alla partenza del sentiero",
+    "lat": "45.61924045194073",
+    "lng": "10.824523648758404",
+    "thumbnail": false,
+    "tipologia": "parcheggio",
+    "google_maps_url": "https://www.google.com/maps/dir/?api=1&destination=45.61924045194073,10.824523648758404&travelmode=driving"
+},
     {
         "title": "Chiesa di Pazzon",
         "content": "",
-        "excerpt": "",
+        "excerpt": "Le prime notizie di una chiesa a Pazzon risalgono al 1145, una cappella romanica dedicata ai Santi Vito, Modesto e Crescenzia. Nel 1568 diventa Parrocchia indipendente da Caprino. L'attuale chiesa, in pregiato marmo rosso della zona, è stata costruita tra il 1932 e il 1934 e consacrata nel 1935. L'interno presenta tre navate con colonnato e soffitto a botte. Il campanile, restaurato nel 1833, ospita 5 campane.",
         "lat": "45.618967",
         "lng": "10.824253",
-        "thumbnail": false,
+        "thumbnail": "images/chiesaPazzon.webp",
         "tipologia": "storico"
     }
 ]
