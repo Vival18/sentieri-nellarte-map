@@ -18,7 +18,7 @@
     gtag('config', 'G-6L90M4TJHC');
     </script>
 
-    <style>
+   <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         #map { height: 100vh; width: 100%; }
@@ -221,29 +221,6 @@
             }
         }
 
-        @media (max-width: 600px) {
-            .install-btn {
-                padding: 8px 12px;
-                font-size: 11px;
-                border-radius: 30px;
-            }
-            #installContainer {
-                bottom: 90px;
-                left: 8px;
-            }
-        }
-
-        @media (max-width: 370px) {
-            .install-btn {
-                padding: 6px 10px;
-                font-size: 10px;
-            }
-            #installContainer {
-                bottom: 90px;
-                left: 6px;
-            }
-        }
-        
         /* ================================= */
         /* REGOLE PER SMARTPHONE (max-width: 600px) */
         /* ================================= */
@@ -293,13 +270,25 @@
                 display: none;
             }
 
+            /* LEGENDA PIÙ IN ALTO (da 80px a 120px) */
             .legend {
                 font-size: 10px;
-                bottom: 80px;
+                bottom: 120px;
                 right: 10px;
                 padding: 6px 10px;
                 background: rgba(255,255,255,0.85);
                 border-radius: 10px;
+            }
+
+            /* PULSANTE INSTALLA PIÙ IN ALTO (da 90px a 130px) */
+            #installContainer {
+                bottom: 130px;
+                left: 8px;
+            }
+            .install-btn {
+                padding: 8px 12px;
+                font-size: 11px;
+                border-radius: 30px;
             }
 
             .offline-msg {
@@ -323,6 +312,9 @@
             }
         }
 
+        /* ================================= */
+        /* REGOLE PER SMARTPHONE MOLTO PICCOLI (max-width: 370px) */
+        /* ================================= */
         @media (max-width: 370px) {
             .filter-bar {
                 max-width: calc(100% - 100px);
@@ -347,18 +339,29 @@
                 border-radius: 16px;
             }
 
+            /* LEGENDA PIÙ IN ALTO (da 70px a 110px) */
+            .legend {
+                font-size: 9px;
+                bottom: 110px;
+                right: 6px;
+                padding: 4px 8px;
+            }
+
+            /* PULSANTE INSTALLA PIÙ IN ALTO (da 90px a 130px) */
+            #installContainer {
+                bottom: 130px;
+                left: 6px;
+            }
+            .install-btn {
+                padding: 6px 10px;
+                font-size: 10px;
+            }
+
             .workinprogress {
                 font-size: 8px;
                 padding: 3px 10px;
                 bottom: 50px;
                 white-space: nowrap;
-            }
-
-            .legend {
-                font-size: 9px;
-                bottom: 70px;
-                right: 6px;
-                padding: 4px 8px;
             }
 
             .mappa-bianca-credit {
