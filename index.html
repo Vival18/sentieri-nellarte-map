@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Sentieri nell'Arte – Baldo Festival</title>
+    <title>Sentieri nell’Arte – Baldo Festival</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
@@ -18,7 +18,7 @@
     gtag('config', 'G-6L90M4TJHC');
     </script>
 
-   <style>
+    <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         #map { height: 100vh; width: 100%; }
@@ -47,7 +47,7 @@
         .filter-bar {
             position: absolute;
             top: 20px;
-            right: 10px;
+            right: 110px;  /* spostata a sinistra per fare spazio allo switch */
             z-index: 1000;
             background: rgba(255,255,255,0.95);
             padding: 6px 12px;
@@ -58,7 +58,7 @@
             gap: 6px;
             justify-content: flex-end;
             backdrop-filter: blur(4px);
-            max-width: calc(100% - 140px);
+            max-width: calc(100% - 200px);
         }
         .filter-btn {
             padding: 6px 14px;
@@ -184,6 +184,46 @@
         }
 
         /* ================================= */
+        /* SWITCH LINGUA (alto destra, sopra i filtri) */
+        /* ================================= */
+        .lang-switch {
+            position: absolute;
+            top: 20px;
+            right: 10px;
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            padding: 4px 6px;
+            border-radius: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            backdrop-filter: blur(4px);
+            display: flex;
+            gap: 2px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .lang-btn {
+            border: none;
+            background: transparent;
+            padding: 4px 8px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.2s;
+            opacity: 0.5;
+            color: #333;
+        }
+        .lang-btn.active {
+            opacity: 1;
+            background: #2d5a27;
+            color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+        }
+        .lang-btn:hover:not(.active) {
+            opacity: 0.8;
+            background: rgba(0,0,0,0.05);
+        }
+
+        /* ================================= */
         /* PULSANTE INSTALLAZIONE APP */
         /* ================================= */
         #installContainer {
@@ -226,11 +266,11 @@
         /* ================================= */
         @media (max-width: 600px) {
             .filter-bar {
-                top: 10px;
-                right: 10px;
+                top: 13px;
+                right: 85px;
                 padding: 4px 6px;
                 gap: 3px;
-                max-width: calc(100% - 140px);
+                max-width: calc(100% - 130px);
                 background: rgba(255,255,255,0.92);
                 border-radius: 30px;
                 box-shadow: 0 2px 8px rgba(0,0,0,0.15);
@@ -244,6 +284,17 @@
                 white-space: nowrap;
                 border-radius: 20px;
                 flex-shrink: 0;
+            }
+
+            .lang-switch {
+                top: 20px;
+                right: 8px;
+                padding: 3px 4px;
+                border-radius: 20px;
+            }
+            .lang-btn {
+                padding: 3px 6px;
+                font-size: 11px;
             }
 
             .locate-container {
@@ -270,7 +321,6 @@
                 display: none;
             }
 
-            /* LEGENDA PIÙ IN ALTO (da 80px a 120px) */
             .legend {
                 font-size: 10px;
                 bottom: 120px;
@@ -280,7 +330,6 @@
                 border-radius: 10px;
             }
 
-            /* PULSANTE INSTALLA PIÙ IN ALTO (da 90px a 130px) */
             #installContainer {
                 bottom: 130px;
                 left: 8px;
@@ -312,21 +361,28 @@
             }
         }
 
-        /* ================================= */
-        /* REGOLE PER SMARTPHONE MOLTO PICCOLI (max-width: 370px) */
-        /* ================================= */
         @media (max-width: 370px) {
             .filter-bar {
                 max-width: calc(100% - 100px);
                 padding: 3px 4px;
                 gap: 2px;
-                top: 8px;
-                right: 8px;
+                top: 12px;
+                right: 80px;
             }
             .filter-btn {
                 padding: 2px 6px;
                 font-size: 9px;
                 border-radius: 16px;
+            }
+
+            .lang-switch {
+                top: 5px;
+                right: 6px;
+                padding: 2px 3px;
+            }
+            .lang-btn {
+                padding: 2px 5px;
+                font-size: 10px;
             }
 
             .locate-container {
@@ -339,7 +395,6 @@
                 border-radius: 16px;
             }
 
-            /* LEGENDA PIÙ IN ALTO (da 70px a 110px) */
             .legend {
                 font-size: 9px;
                 bottom: 110px;
@@ -347,7 +402,6 @@
                 padding: 4px 8px;
             }
 
-            /* PULSANTE INSTALLA PIÙ IN ALTO (da 90px a 130px) */
             #installContainer {
                 bottom: 130px;
                 left: 6px;
@@ -369,12 +423,102 @@
                 padding: 2px 8px;
                 bottom: 16px;
             }
-        }
+            /* ================================= */
+/* REGOLE PER IPHONE 6/7/8/SE (375x667) */
+/* ================================= */
+@media only screen and (max-width: 375px) and (max-height: 667px) {
+    /* Sposta il pulsante geolocalizzazione MOLTO PIÙ IN BASSO */
+    .locate-container {
+        top: 70px !important;
+        left: 8px;
+    }
+    .locate-btn {
+        padding: 2px 6px;
+        font-size: 10px;
+        border-radius: 16px;
+        background: #4caf50;
+        color: white;
+        border: none;
+        font-weight: bold;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    
+    /* Barra filtri più compatta e più a destra */
+    .filter-bar {
+        top: 10px !important;
+        right: 60px !important;
+        padding: 3px 4px !important;
+        gap: 2px !important;
+        max-width: calc(100% - 110px) !important;
+        background: rgba(255,255,255,0.92);
+        border-radius: 20px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+    }
+    .filter-btn {
+        padding: 2px 5px !important;
+        font-size: 8px !important;
+        border-radius: 12px !important;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+    
+    /* Switch lingua più compatto */
+    .lang-switch {
+        top: 10px !important;
+        right: 6px !important;
+        padding: 2px 3px !important;
+        border-radius: 16px !important;
+    }
+    .lang-btn {
+        padding: 1px 4px !important;
+        font-size: 9px !important;
+    }
+    
+    /* Legenda più in alto */
+    .legend {
+        font-size: 8px !important;
+        bottom: 90px !important;
+        right: 6px !important;
+        padding: 3px 6px !important;
+    }
+    .legend span {
+        width: 12px !important;
+        height: 12px !important;
+    }
+    
+    /* Banner più piccolo */
+    .workinprogress {
+        font-size: 7px !important;
+        padding: 2px 8px !important;
+        bottom: 45px !important;
+        white-space: nowrap;
+    }
+    
+    /* Install app più in alto */
+    #installContainer {
+        bottom: 100px !important;
+        left: 4px !important;
+    }
+    .install-btn {
+        padding: 4px 6px !important;
+        font-size: 8px !important;
+        border-radius: 20px !important;
+    }
+    
+    /* Crediti più compatti */
+    .mappa-bianca-credit {
+        font-size: 7px !important;
+        padding: 2px 6px !important;
+        bottom: 12px !important;
+    }
+}
+}
     </style>
 </head>
 <body>
     <div id="map"></div>
-    <div class="workinprogress">
+    <div class="workinprogress" id="bannerWork">
         🔧 Mappa in fase di aggiornamento con nuovi punti di interesse. <br>
         Per informazioni o collaborazioni, contattaci.
     </div>
@@ -383,6 +527,13 @@
             📲 Installa l'app
         </button>
     </div>
+    
+    <!-- SWITCH LINGUA -->
+    <div class="lang-switch" id="langSwitch">
+        <button class="lang-btn active" data-lang="it" id="langIt">🇮🇹</button>
+        <button class="lang-btn" data-lang="en" id="langEn">🇬🇧</button>
+    </div>
+    
     <div class="filter-bar" id="filterBar"></div>
     <div class="locate-container">
         <button id="locateBtn" class="locate-btn">📍 La mia posizione</button>
@@ -399,15 +550,61 @@
 
     <script>
         // ========================
+        // 0. TRADUZIONI
+        // ========================
+        const translations = {
+            it: {
+                filters: ['Tutti', 'Opere', 'Punti Storici'],
+                legend: 'Legenda',
+                parking: 'Parcheggio',
+                trail: 'Sentiero',
+                locate: '📍 La mia posizione',
+                locating: '📍 Ricerca...',
+                loading: 'Caricamento...',
+                noMarkers: 'ℹ️ Nessun punto d’interesse (solo sentiero)',
+                offline: '⚠️ Mappa offline. Alcune funzionalità potrebbero non essere disponibili.',
+                workBanner: '🔧 Mappa in fase di aggiornamento con nuovi punti di interesse. Per informazioni o collaborazioni, contattaci.',
+                install: '📲 Installa l\'app',
+                navigate: '📍 Naviga al parcheggio',
+                openMaps: '📍 Apri in Google Maps',
+                tipologia: 'Tipologia',
+                parkingLabel: 'Parcheggio',
+                poi: 'Punti di interesse',
+                sentiero: 'Sentiero'
+            },
+            en: {
+                filters: ['All', 'Artworks', 'Historical Sites'],
+                legend: 'Legend',
+                parking: 'Parking',
+                trail: 'Trail',
+                locate: '📍 My location',
+                locating: '📍 Searching...',
+                loading: 'Loading...',
+                noMarkers: 'ℹ️ No points of interest (trail only)',
+                offline: '⚠️ Offline map. Some features may be unavailable.',
+                workBanner: '🔧 Map is being updated with new points of interest. For information or collaborations, contact us.',
+                install: '📲 Install app',
+                navigate: '📍 Navigate to parking',
+                openMaps: '📍 Open in Google Maps',
+                tipologia: 'Type',
+                parkingLabel: 'Parking',
+                poi: 'Points of interest',
+                sentiero: 'Trail'
+            }
+        };
+
+        let currentLang = localStorage.getItem('sentieriLang') || 'it';
+
+        // ========================
         // 1. VARIABILI GLOBALI
         // ========================
         let map;
         let markerClusterGroup;
         let allMarkers = [];
         let currentFilter = 'Tutti';
-        let parkingMarker = null; // per tenere traccia del marker parcheggio
+        let parkingMarker = null;
+        let markerData = []; // salva i dati originali per ricostruire i popup
 
-        // Mappa colori
         const colorMap = {
             'opera': '#e31a23',
             'storico': '#ff8c00'
@@ -416,6 +613,10 @@
         const categoryNames = {
             'opera': 'Opere',
             'storico': 'Punti storici'
+        };
+        const categoryNamesEn = {
+            'opera': 'Artworks',
+            'storico': 'Historical Sites'
         };
 
         // ========================
@@ -430,7 +631,6 @@
             });
         }
 
-        // Icona personalizzata per il parcheggio (con "P" bianca)
         function getParkingIcon() {
             return L.divIcon({
                 html: `<div style="background-color: #2ecc71; width: 32px; height: 32px; border-radius: 50%; border: 3px solid white; box-shadow: 0 0 8px rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 18px; font-family: 'Segoe UI', sans-serif;">P</div>`,
@@ -446,16 +646,13 @@
                 zoom: 15
             });
             
-            // CREA UN PANE DEDICATO PER IL PARCHEGGIO (con z-index alto)
-            // Il pane 'parkingPane' viene creato prima dei tile e dei cluster
             const parkingPane = map.createPane('parkingPane');
-            parkingPane.style.zIndex = 650; // più alto del default dei marker (400) e dei cluster
+            parkingPane.style.zIndex = 650;
             
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             }).addTo(map);
             
-            // Debug coordinate (solo console)
             map.on('click', function(e) {
                 console.log(`📍 [${e.latlng.lat.toFixed(6)}, ${e.latlng.lng.toFixed(6)}]`);
             });
@@ -495,21 +692,46 @@
                 });
         }
 
+        // ========================
+        // 3. BUILD POPUP (con supporto lingua)
+        // ========================
+        function buildPopupContent(m, tipologia, lang) {
+            const t = translations[lang];
+            const title = lang === 'en' && m.title_en ? m.title_en : m.title;
+            const excerpt = lang === 'en' && m.excerpt_en ? m.excerpt_en : (m.excerpt || (m.content ? m.content.substring(0,150) : ''));
+            const tipologiaLabel = lang === 'en' ? categoryNamesEn[tipologia] || tipologia : categoryNames[tipologia] || tipologia;
+            
+            let content = `
+                <strong>${escapeHtml(title)}</strong><br>
+                <em>${t.tipologia}:</em> ${tipologiaLabel}<br>
+                ${m.thumbnail ? `<img src="${escapeHtml(m.thumbnail)}" style="width:100px; max-width:100%; margin-top:5px; border-radius:4px;"><br>` : ''}
+                <p>${escapeHtml(excerpt)}</p>
+            `;
+            
+            if (m.google_maps_url) {
+                const label = tipologia === 'parcheggio' ? t.navigate : t.openMaps;
+                content += `<br><a href="${escapeHtml(m.google_maps_url)}" target="_blank" style="display:inline-block; background:#4285f4; color:white; padding:6px 14px; border-radius:30px; text-decoration:none; font-weight:bold; margin-top:8px; font-size:14px;">${label}</a>`;
+            }
+            return content;
+        }
+
+        function updatePopupContent(marker, m, tipologia, lang) {
+            const content = buildPopupContent(m, tipologia, lang);
+            marker.setPopupContent(content);
+        }
+
+        // ========================
+        // 4. FILTRI E LEGENDA (con supporto lingua)
+        // ========================
         function updateCounter() {
             const visible = markerClusterGroup.getLayers().length;
-            document.getElementById('counter').innerHTML = `📍 ${visible} / ${allMarkers.length} punti`;
+            const t = translations[currentLang];
+            document.getElementById('counter').innerHTML = `📍 ${visible} / ${allMarkers.length} ${t.poi}`;
         }
 
         function filterMarkers(category) {
             currentFilter = category;
             markerClusterGroup.clearLayers();
-            
-            // Il parcheggio è SEMPRE visibile (non viene influenzato dai filtri)
-            // Quindi lo aggiungiamo comunque alla mappa se esiste
-            if (parkingMarker) {
-                // Non facciamo nulla: è già sulla mappa
-            }
-            
             allMarkers.forEach(item => {
                 let match = false;
                 if (category === 'Tutti') match = true;
@@ -523,13 +745,13 @@
         function buildFilters() {
             const filterDiv = document.getElementById('filterBar');
             filterDiv.innerHTML = '';
-            // FILTRI: solo Tutti, Opere, Punti Storici (rimossi Servizi e Parcheggio)
-            const buttons = ['Tutti', 'Opere', 'Punti Storici'];
+            const t = translations[currentLang];
+            const buttons = t.filters;
             buttons.forEach(cat => {
                 const btn = document.createElement('button');
                 btn.textContent = cat;
                 btn.classList.add('filter-btn');
-                if (cat === 'Tutti') btn.classList.add('active');
+                if (cat === 'Tutti' || cat === 'All') btn.classList.add('active');
                 btn.addEventListener('click', () => {
                     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
@@ -541,30 +763,38 @@
 
         function buildLegend(uniqueTypes) {
             const legendDiv = document.getElementById('legend');
-            legendDiv.innerHTML = '<strong>Legenda</strong><br>';
+            const t = translations[currentLang];
+            legendDiv.innerHTML = `<strong>${t.legend}</strong><br>`;
             if (uniqueTypes.length === 0) {
-                legendDiv.innerHTML += '<span style="background-color:red;"></span> Sentiero<br>';
+                legendDiv.innerHTML += `<span style="background-color:red;"></span> ${t.trail}<br>`;
                 return;
             }
-            // Ordine: opere, storici, parcheggio (sempre presente)
             const order = ['opera', 'storico'];
             order.forEach(cat => {
                 if (uniqueTypes.includes(cat)) {
                     let color = colorMap[cat];
-                    let label = categoryNames[cat];
+                    let label = currentLang === 'en' ? categoryNamesEn[cat] : categoryNames[cat];
                     legendDiv.innerHTML += `<span style="background-color: ${color};"></span> ${label}<br>`;
                 }
             });
-            // Aggiungi sempre il parcheggio e il sentiero
-            legendDiv.innerHTML += `<span style="background-color: #2ecc71;"></span> Parcheggio<br>`;
-            legendDiv.innerHTML += '<span style="background-color:red; border-radius: 4px; width:16px; height:4px;"></span> Sentiero<br>';
+            legendDiv.innerHTML += `<span style="background-color: #2ecc71;"></span> ${t.parking}<br>`;
+            legendDiv.innerHTML += `<span style="background-color:red; border-radius: 4px; width:16px; height:4px;"></span> ${t.trail}<br>`;
         }
 
         // ========================
-        // 3. GEOLOCALIZZAZIONE
+        // 5. GEOLOCALIZZAZIONE (con supporto lingua)
         // ========================
         const locateBtn = document.getElementById('locateBtn');
         let userMarker = null, userCircle = null;
+
+        function updateLocateButton() {
+            const t = translations[currentLang];
+            if (locateBtn.textContent === '📍 Ricerca...' || locateBtn.textContent === '📍 Searching...') {
+                // non sovrascrivere durante la ricerca
+                return;
+            }
+            locateBtn.textContent = t.locate;
+        }
 
         function onLocationFound(e) {
             const { latitude: lat, longitude: lng, accuracy: radius } = e;
@@ -576,32 +806,37 @@
                 iconSize: [20, 20],
                 className: 'user-marker'
             });
-            userMarker = L.marker([lat, lng], { icon: userIcon }).addTo(map).bindPopup('Sei qui').openPopup();
+            userMarker = L.marker([lat, lng], { icon: userIcon }).addTo(map).bindPopup('Sei qui / You are here').openPopup();
             userCircle = L.circle([lat, lng], { radius, color: '#2196f3', weight: 1, fillOpacity: 0.1 }).addTo(map);
+            const t = translations[currentLang];
+            locateBtn.textContent = t.locate;
+            locateBtn.disabled = false;
         }
 
         function onLocationError(e) {
             let message = '';
             switch (e.code) {
-                case 1: message = 'Permesso negato. Attiva la geolocalizzazione.'; break;
-                case 2: message = 'Posizione non disponibile.'; break;
-                case 3: message = 'Timeout della richiesta.'; break;
-                default: message = 'Errore sconosciuto.';
+                case 1: message = currentLang === 'en' ? 'Permission denied. Enable geolocation.' : 'Permesso negato. Attiva la geolocalizzazione.'; break;
+                case 2: message = currentLang === 'en' ? 'Position unavailable.' : 'Posizione non disponibile.'; break;
+                case 3: message = currentLang === 'en' ? 'Request timeout.' : 'Timeout della richiesta.'; break;
+                default: message = currentLang === 'en' ? 'Unknown error.' : 'Errore sconosciuto.';
             }
             alert('⚠️ ' + message);
+            const t = translations[currentLang];
+            locateBtn.textContent = t.locate;
+            locateBtn.disabled = false;
         }
 
         locateBtn.addEventListener('click', () => {
             if (!navigator.geolocation) {
-                alert('Il tuo browser non supporta la geolocalizzazione.');
+                alert(currentLang === 'en' ? 'Your browser does not support geolocation.' : 'Il tuo browser non supporta la geolocalizzazione.');
                 return;
             }
-            locateBtn.textContent = '📍 Ricerca...';
+            const t = translations[currentLang];
+            locateBtn.textContent = t.locating;
             locateBtn.disabled = true;
             navigator.geolocation.getCurrentPosition(
                 (position) => {
-                    locateBtn.textContent = '📍 La mia posizione';
-                    locateBtn.disabled = false;
                     onLocationFound({
                         latitude: position.coords.latitude,
                         longitude: position.coords.longitude,
@@ -609,8 +844,6 @@
                     });
                 },
                 (error) => {
-                    locateBtn.textContent = '📍 La mia posizione';
-                    locateBtn.disabled = false;
                     onLocationError(error);
                 },
                 { enableHighAccuracy: true, timeout: 30000, maximumAge: 60000 }
@@ -618,17 +851,60 @@
         });
 
         // ========================
-        // 4. OFFLINE DETECTION
+        // 6. OFFLINE DETECTION
         // ========================
         function checkOffline() {
             const offlineMsg = document.getElementById('offlineMsg');
+            const t = translations[currentLang];
+            offlineMsg.textContent = t.offline;
             offlineMsg.style.display = navigator.onLine ? 'none' : 'block';
         }
         window.addEventListener('online', checkOffline);
         window.addEventListener('offline', checkOffline);
 
         // ========================
-        // 5. CARICAMENTO MARKER E AVVIO
+        // 7. SWITCH LINGUA
+        // ========================
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('sentieriLang', lang);
+            
+            // Aggiorna pulsanti
+            document.getElementById('langIt').classList.toggle('active', lang === 'it');
+            document.getElementById('langEn').classList.toggle('active', lang === 'en');
+            
+            // Aggiorna testi statici
+            const t = translations[lang];
+            document.getElementById('bannerWork').innerHTML = t.workBanner;
+            document.getElementById('offlineMsg').textContent = t.offline;
+            updateLocateButton();
+            
+            // Ricostruisce filtri e legenda
+            buildFilters();
+            const uniqueTypes = new Set(markerData.map(m => m.tipologiaNorm));
+            buildLegend(Array.from(uniqueTypes));
+            
+            // Aggiorna i popup di tutti i marker
+            markerData.forEach(item => {
+                updatePopupContent(item.marker, item.rawData, item.tipologiaNorm, lang);
+            });
+            if (parkingMarker && parkingMarker._rawData) {
+                updatePopupContent(parkingMarker, parkingMarker._rawData, 'parcheggio', lang);
+            }
+            
+            // Aggiorna contatore
+            updateCounter();
+            
+            // Forza aggiornamento filtro corrente
+            filterMarkers(currentFilter);
+        }
+
+        // Eventi switch lingua
+        document.getElementById('langIt').addEventListener('click', () => setLanguage('it'));
+        document.getElementById('langEn').addEventListener('click', () => setLanguage('en'));
+
+        // ========================
+        // 8. CARICAMENTO MARKER E AVVIO
         // ========================
         initMap();
         addSentieroFromGeoJSON();
@@ -640,7 +916,6 @@
                 if (!data.length) throw new Error('Nessun marker');
                 const typesSet = new Set();
                 
-                // Normalizzazione tipologie
                 data.forEach(m => {
                     let tipologia = m.tipologia;
                     if (tipologia === 'opera' || tipologia === 'opere') tipologia = 'opera';
@@ -658,63 +933,47 @@
                     if (isNaN(lat) || isNaN(lng)) return;
                     const tipologia = m.tipologiaNorm;
                     
-                    // SE È UN PARCHEGGIO: crea marker con icona personalizzata, NON nel cluster
-                    // e viene aggiunto al pane dedicato 'parkingPane' per stare SOPRA i cluster
                     if (tipologia === 'parcheggio') {
                         const icon = getParkingIcon();
-                        
-                        // Costruisce popup con il pulsante Google Maps
-                        let popupContent = `
-                            <strong>${escapeHtml(m.title)}</strong><br>
-                            <em>Tipologia:</em> Parcheggio<br>
-                            ${m.thumbnail ? `<img src="${escapeHtml(m.thumbnail)}" style="width:100px; max-width:100%; margin-top:5px; border-radius:4px;"><br>` : ''}
-                            <p>${escapeHtml(m.excerpt || (m.content ? m.content.substring(0,150) : ''))}</p>
-                        `;
-                        
-                        // Aggiunge il pulsante "Naviga al parcheggio" se esiste google_maps_url
-                        if (m.google_maps_url) {
-                            popupContent += `<br><a href="${escapeHtml(m.google_maps_url)}" target="_blank" style="display:inline-block; background:#4285f4; color:white; padding:6px 14px; border-radius:30px; text-decoration:none; font-weight:bold; margin-top:8px; font-size:14px;">📍 Naviga al parcheggio</a>`;
-                        }
-                        
-                        // IMPORTANTE: aggiungi il marker al pane dedicato
+                        const popupContent = buildPopupContent(m, 'parcheggio', currentLang);
                         const marker = L.marker([lat, lng], { 
                             icon: icon,
-                            pane: 'parkingPane'  // <-- CHIAVE: usa il pane con z-index alto
+                            pane: 'parkingPane'
                         }).bindPopup(popupContent);
-                        
+                        marker._rawData = m; // salva dati per aggiornamenti
                         marker.addTo(map);
-                        parkingMarker = marker; // salva riferimento
-                        return; // esce dal forEach per questo elemento
+                        parkingMarker = marker;
+                        return;
                     }
                     
-                    // TUTTI GLI ALTRI MARKER (opera, storico): vanno nel cluster
                     const color = colorMap[tipologia] || '#cccccc';
                     const icon = getColoredIcon(color);
-                    
-                    let popupContent = `
-                        <strong>${escapeHtml(m.title)}</strong><br>
-                        <em>Tipologia:</em> ${categoryNames[tipologia] || tipologia}<br>
-                        ${m.thumbnail ? `<img src="${escapeHtml(m.thumbnail)}" style="width:100px; max-width:100%; margin-top:5px; border-radius:4px;"><br>` : ''}
-                        <p>${escapeHtml(m.excerpt || (m.content ? m.content.substring(0,150) : ''))}</p>
-                    `;
-                    
-                    // Se per caso anche altri marker hanno google_maps_url (utile per servizi)
-                    if (m.google_maps_url) {
-                        popupContent += `<br><a href="${escapeHtml(m.google_maps_url)}" target="_blank" style="display:inline-block; background:#4285f4; color:white; padding:6px 14px; border-radius:30px; text-decoration:none; font-weight:bold; margin-top:8px; font-size:14px;">📍 Apri in Google Maps</a>`;
-                    }
-                    
+                    const popupContent = buildPopupContent(m, tipologia, currentLang);
                     const marker = L.marker([lat, lng], { icon }).bindPopup(popupContent);
-                    allMarkers.push({ marker, tipologia });
+                    marker._rawData = m;
+                    allMarkers.push({ marker, tipologia, rawData: m });
+                    markerData.push({ marker, tipologiaNorm: tipologia, rawData: m });
                 });
 
+                // Imposta lingua iniziale
+                document.getElementById('langIt').classList.toggle('active', currentLang === 'it');
+                document.getElementById('langEn').classList.toggle('active', currentLang === 'en');
+                
                 buildFilters();
                 buildLegend(uniqueTypes);
                 filterMarkers('Tutti');
+                updateLocateButton();
+                
+                // Applica eventuale banner tradotto
+                const t = translations[currentLang];
+                document.getElementById('bannerWork').innerHTML = t.workBanner;
+                document.getElementById('offlineMsg').textContent = t.offline;
             })
             .catch(err => {
                 console.warn(err);
-                document.getElementById('counter').innerHTML = 'ℹ️ Nessun punto d’interesse (solo sentiero)';
-                document.getElementById('legend').innerHTML = '<strong>Legenda</strong><br><span style="background-color:red;"></span> Sentiero';
+                const t = translations[currentLang];
+                document.getElementById('counter').innerHTML = t.noMarkers;
+                document.getElementById('legend').innerHTML = `<strong>${t.legend}</strong><br><span style="background-color:red;"></span> ${t.trail}`;
                 buildFilters();
             });
 

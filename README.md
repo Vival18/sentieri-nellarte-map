@@ -65,6 +65,8 @@ text
 
     Responsive → su smartphone i controlli zoom sono nascosti, la legenda si sposta in alto, il banner “Lavori in corso” è centrato e non occupa tutta la larghezza.
 
+    Versione inglese
+
 ## 🧪 Debug per sviluppatori
 
     Ottenere coordinate cliccando sulla mappa (utile per aggiungere nuovi punti):
