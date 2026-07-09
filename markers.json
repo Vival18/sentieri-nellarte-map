@@ -1,43 +1,10 @@
 [
     {
-        "title": "Opera d'arte esempio 1",
-        "title_en": "Artwork example 1",
-        "content": "",
-        "excerpt": "",
-        "excerpt_en": "",
-        "lat": "45.62150092623591",
-        "lng": "10.82912463815871",
-        "thumbnail": false,
-        "tipologia": "opera"
-    },
-    {
-        "title": "Opera d'arte esempio 2",
-        "title_en": "Artwork example 2",
-        "content": "",
-        "excerpt": "",
-        "excerpt_en": "",
-        "lat": "45.624300",
-        "lng": "10.834537",
-        "thumbnail": false,
-        "tipologia": "opera"
-    },
-    {
-        "title": "Opera d'arte esempio 3",
-        "title_en": "Artwork example 3",
-        "content": "",
-        "excerpt": "",
-        "excerpt_en": "",
-        "lat": "45.620730",
-        "lng": "10.832053",
-        "thumbnail": false,
-        "tipologia": "opera"
-    },
-    {
         "title": "Fontana di Pazzon",
         "title_en": "Pazzon Fountain",
         "content": "",
         "excerpt": "Imponente fontana in marmo rosso Verona, scavata in un unico blocco di pietra, situata nella piazza di Pazzon. Questo antico manufatto è un punto di riferimento per gli escursionisti che percorrono le 'Vie dell'Acqua' e il punto di partenza per il sentiero che conduce alla suggestiva Valle del Tasso. Dalla piazza si gode di un ampio panorama sulla vallata di Caprino e sul Monte Baldo.",
-        "excerpt_en": "Impressive fountain made of Verona red marble, carved from a single block of stone, located in Pazzon square. This ancient artifact is a landmark for hikers following the 'Vie dell'Acqua' and the starting point for the trail leading to the suggestive Tasso Valley. From the square you can enjoy a wide panorama over the Caprino valley and Monte Baldo.",
+        "excerpt_en": "Impressive fountain made of Verona red marble, carved from a single block of stone, located in Pazzon square. This ancient artifact is a landmark for hikers following the 'Water Ways' and the starting point for the trail leading to the suggestive Tasso Valley. From the square you can enjoy a wide panorama over the Caprino valley and Monte Baldo.",
         "lat": "45.61867687782041",
         "lng": "10.8250107031088",
         "thumbnail": "images/fontanaPazzon2.webp",
@@ -66,6 +33,17 @@
         "tipologia": "storico"
     },
     {
+        "title": "Chiesa di Pazzon",
+        "title_en": "Pazzon Church",
+        "content": "",
+        "excerpt": "Le prime notizie di una chiesa a Pazzon risalgono al 1145, una cappella romanica dedicata ai Santi Vito, Modesto e Crescenzia. Nel 1568 diventa Parrocchia indipendente da Caprino. L'attuale chiesa, in pregiato marmo rosso della zona, è stata costruita tra il 1932 e il 1934 e consacrata nel 1935. L'interno presenta tre navate con colonnato e soffitto a botte. Il campanile, restaurato nel 1833, ospita 5 campane.",
+        "excerpt_en": "The first records of a church in Pazzon date back to 1145, a Romanesque chapel dedicated to Saints Vitus, Modestus and Crescentia. In 1568 it became an independent parish from Caprino. The current church, made of fine local red marble, was built between 1932 and 1934 and consecrated in 1935. The interior features three naves with a colonnade and a barrel vault. The bell tower, restored in 1833, houses 5 bells.",
+        "lat": "45.618967",
+        "lng": "10.824253",
+        "thumbnail": "images/chiesaPazzon.webp",
+        "tipologia": "storico"
+    },
+    {
         "title": "Parcheggio",
         "title_en": "Parking",
         "content": "",
@@ -77,15 +55,170 @@
         "tipologia": "parcheggio",
         "google_maps_url": "https://www.google.com/maps/dir/?api=1&destination=45.61924045194073,10.824523648758404&travelmode=driving"
     },
+
     {
-        "title": "Chiesa di Pazzon",
-        "title_en": "Pazzon Church",
+        "title": "Limen",
+        "title_en": "Limen",
         "content": "",
-        "excerpt": "Le prime notizie di una chiesa a Pazzon risalgono al 1145, una cappella romanica dedicata ai Santi Vito, Modesto e Crescenzia. Nel 1568 diventa Parrocchia indipendente da Caprino. L'attuale chiesa, in pregiato marmo rosso della zona, è stata costruita tra il 1932 e il 1934 e consacrata nel 1935. L'interno presenta tre navate con colonnato e soffitto a botte. Il campanile, restaurato nel 1833, ospita 5 campane.",
-        "excerpt_en": "The first records of a church in Pazzon date back to 1145, a Romanesque chapel dedicated to Saints Vito, Modesto and Crescenzia. In 1568 it became an independent parish from Caprino. The current church, made of fine local red marble, was built between 1932 and 1934 and consecrated in 1935. The interior features three naves with a colonnade and a barrel vault. The bell tower, restored in 1833, houses 5 bells.",
-        "lat": "45.618967",
-        "lng": "10.824253",
-        "thumbnail": "images/chiesaPazzon.webp",
-        "tipologia": "storico"
+        "excerpt": "Opera di Giovanni Pinosio",
+        "excerpt_en": "Artwork by Giovanni Pinosio",
+        "lat": "45.624778",
+        "lng": "10.833946",
+        "thumbnail": false,
+        "tipologia": "opera"
+    },
+    {
+        "title": "An old-School kind of love",
+        "title_en": "An old-School kind of love",
+        "content": "",
+        "excerpt": "Opera di Antonella Argentile",
+        "excerpt_en": "Artwork by Antonella Argentile",
+        "lat": "45.623720",
+        "lng": "10.833474",
+        "thumbnail": false,
+        "tipologia": "opera"
+    },
+    {
+        "title": "Rizoma",
+        "title_en": "Rizoma",
+        "content": "",
+        "excerpt": "Opera di Lucia Amalia Maggio",
+        "excerpt_en": "Artwork by Lucia Amalia Maggio",
+        "lat": "45.623971",
+        "lng": "10.834483",
+        "thumbnail": false,
+        "tipologia": "opera"
+    },
+    {
+        "title": "My Beloved Tile",
+        "title_en": "My Beloved Tile",
+        "content": "",
+        "excerpt": "Opera di Davide Sbardella",
+        "excerpt_en": "Artwork by Davide Sbardella",
+        "lat": "45.624654",
+        "lng": "10.834011",
+        "thumbnail": false,
+        "tipologia": "opera"
+    },
+    {
+        "title": "Flores mixti / La città dei fiori",
+        "title_en": "Flores mixti / La città dei fiori",
+        "content": "",
+        "excerpt": "Opera di Adelino Rossi",
+        "excerpt_en": "Artwork by Adelino Rossi",
+        "lat": "45.623498",
+        "lng": "10.832895",
+        "thumbnail": false,
+        "tipologia": "opera"
+    },
+    {
+        "title": "Omaggio al Gek",
+        "title_en": "Omaggio al Gek",
+        "content": "",
+        "excerpt": "Opera di Nicoletta Vascotto",
+        "excerpt_en": "Artwork by Nicoletta Vascotto",
+        "lat": "45.617403",
+        "lng": "10.829033",
+        "thumbnail": false,
+        "tipologia": "opera"
+    },
+    {
+        "title": "Terre rare",
+        "title_en": "Terre rare",
+        "content": "",
+        "excerpt": "Opera di Graziano Concari",
+        "excerpt_en": "Artwork by Graziano Concari",
+        "lat": "45.622673",
+        "lng": "10.831307",
+        "thumbnail": false,
+        "tipologia": "opera"
+    },
+    {
+        "title": "Genusus Loci",
+        "title_en": "Genusus Loci",
+        "content": "",
+        "excerpt": "Opera di Riccardo Mazzei",
+        "excerpt_en": "Artwork by Riccardo Mazzei",
+        "lat": "45.623585",
+        "lng": "10.833308",
+        "thumbnail": false,
+        "tipologia": "opera"
+    },
+    {
+        "title": "Opera di Giancarlo Brunelli",
+        "title_en": "Artwork by Giancarlo Brunelli",
+        "content": "",
+        "excerpt": "Opera di Giancarlo Brunelli",
+        "excerpt_en": "Artwork by Giancarlo Brunelli",
+        "lat": "45.617748",
+        "lng": "10.829408",
+        "thumbnail": false,
+        "tipologia": "opera"
+    },
+    {
+        "title": "Opera di Antonio Franchetti",
+        "title_en": "Artwork by Antonio Franchetti",
+        "content": "",
+        "excerpt": "Opera di Antonio Franchetti",
+        "excerpt_en": "Artwork by Antonio Franchetti",
+        "lat": "45.620018",
+        "lng": "10.831661",
+        "thumbnail": false,
+        "tipologia": "opera"
+    },
+    {
+        "title": "Cuore del Baldo",
+        "title_en": "Cuore del Baldo",
+        "content": "",
+        "excerpt": "Opera di Michele Farina",
+        "excerpt_en": "Artwork by Michele Farina",
+        "lat": "45.619332",
+        "lng": "10.826801",
+        "thumbnail": false,
+        "tipologia": "opera"
+    },
+    {
+        "title": "Panta Rhei",
+        "title_en": "Panta Rhei",
+        "content": "",
+        "excerpt": "Opera di Giulia Miorotti",
+        "excerpt_en": "Artwork by Giulia Miorotti",
+        "lat": "45.624249",
+        "lng": "10.834032",
+        "thumbnail": false,
+        "tipologia": "opera"
+    },
+    {
+        "title": "Equilibrio apparente",
+        "title_en": "Equilibrio apparente",
+        "content": "",
+        "excerpt": "Opera di Angela Zanchettin",
+        "excerpt_en": "Artwork by Angela Zanchettin",
+        "lat": "45.623693",
+        "lng": "10.834386",
+        "thumbnail": false,
+        "tipologia": "opera"
+    },
+    {
+        "title": "Domus Aurea 2026",
+        "title_en": "Domus Aurea 2026",
+        "content": "",
+        "excerpt": "Opera di Emma Brighenti",
+        "excerpt_en": "Artwork by Emma Brighenti",
+        "lat": "45.622478",
+        "lng": "10.830760",
+        "thumbnail": false,
+        "tipologia": "opera"
+    },
+    {
+        "title": "Tenera eufonia",
+        "title_en": "Tenera eufonia",
+        "content": "",
+        "excerpt": "Opera di Chiara Castagna",
+        "excerpt_en": "Artwork by Chiara Castagna",
+        "lat": "45.623915",
+        "lng": "10.833496",
+        "thumbnail": false,
+        "tipologia": "opera"
     }
 ]

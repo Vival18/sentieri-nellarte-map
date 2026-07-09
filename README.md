@@ -84,4 +84,4 @@ text
 
 ## Questa demo è un pilota gratuito in cambio di referenza e crediti. Per usi commerciali o integrazioni avanzate, contattare lo sviluppatore.
 
-Ultimo aggiornamento: giugno 2026
+Ultimo aggiornamento: luglio 2026
