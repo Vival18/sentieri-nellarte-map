@@ -557,7 +557,7 @@
 
             .legend {
                 font-size: 10px;
-                bottom: 50px;
+                bottom: 120px;
                 right: 10px;
                 padding: 6px 10px;
                 background: rgba(255,255,255,0.85);
@@ -994,6 +994,7 @@
         let infoMarker = null;
         let markerData = [];
         let sentieroBounds = null;
+        const isMobile = window.innerWidth <= 600;
 
         const colorMap = {
             'opera': '#e31a23',
@@ -1100,7 +1101,7 @@
         }
 
         // ========================
-        // 3. BUILD POPUP (con supporto lingua)
+        // 3. BUILD POPUP
         // ========================
         function buildPopupContent(m, tipologia, lang) {
             const t = translations[lang];
@@ -1131,13 +1132,22 @@
             const t = translations[lang];
             const isIt = lang === 'it';
             
+            // Dimensioni ridotte su mobile (isMobile è globale)
+            const fontSize = isMobile ? '11px' : '12px';
+            const padding = isMobile ? '4px' : '8px';
+            const titleSize = isMobile ? '14px' : '16px';
+            const maxWidth = isMobile ? '260px' : '280px';
+            const spacing = isMobile ? '6px' : '10px';
+            
             return `
-                <div style="max-width: 280px; font-family: 'Segoe UI', sans-serif;">
-                    <h3 style="margin: 0 0 8px 0; color: #1e90ff; font-size: 16px;">ℹ️ ${isIt ? 'Partenza sentiero (senso orario)' : 'Starting point (clockwise direction)'}</h3>
+                <div style="max-width: ${maxWidth}; font-family: 'Segoe UI', sans-serif; max-height: 75vh; overflow-y: auto; padding: ${isMobile ? '4px 2px' : '0'};">
+                    <h3 style="margin: 0 0 4px 0; color: #1e90ff; font-size: ${titleSize};">
+                        ℹ️ ${isIt ? 'Partenza sentiero (senso orario)' : 'Starting point (clockwise direction)'}
+                    </h3>
                     
-                    <div style="margin-bottom: 10px; padding: 8px; background: #f5f5f5; border-radius: 8px;">
-                        <strong>${isIt ? '📏 Caratteristiche del sentiero' : '📏 Trail features'}</strong><br>
-                        <span style="font-size: 12px;">
+                    <div style="margin-bottom: ${spacing}; padding: ${padding}; background: #f5f5f5; border-radius: 8px;">
+                        <strong style="font-size: ${fontSize};">${isIt ? '📏 Caratteristiche' : '📏 Features'}</strong><br>
+                        <span style="font-size: ${fontSize};">
                             ${isIt ? 'Lunghezza: ~3 km (anello)' : 'Length: ~3 km (loop)'}<br>
                             ${isIt ? 'Durata: 1 - 1.5 ore' : 'Duration: 1 - 1.5 hours'}<br>
                             ${isIt ? 'Difficoltà: facile' : 'Difficulty: easy'}<br>
@@ -1145,35 +1155,36 @@
                         </span>
                     </div>
                     
-                    <div style="margin-bottom: 10px; padding: 8px; background: #f5f5f5; border-radius: 8px;">
-                        <strong>📅 ${isIt ? 'Eventi in programma' : 'Upcoming events'}</strong><br>
-<span style="font-size: 12px;">
-    ${isIt ? '• Sabato 11 luglio Ore 16.30: Inaugurazione della mostra con visita guidata' : '• Saturday, July 11, 4:30 PM: Opening event with guided tour.'}<br>
-    ${isIt ? '• Domenica 26 luglio Ore 19.00: Visita con luna piena' : '• Sunday, July 26, 7:00 PM: Visit with full moon.'}<br>
-    ${isIt ? '• Sabato 5 settembre ore 18.00: Finissage della mostra. Conversazione con gli artisti' : '• Saturday, September 5, 6:00 PM: Closing event with artists conversation.'}<br>
-</span>
-<div style="font-style: italic; font-size: 11px; margin-top: 4px; color: #666;">
-        ${isIt ? 'Per informazioni dettagliate sugli altri eventi in programma, consulta il volantino.' : 'For detailed information about other events, please consult the brochure.'}
+                    <div style="margin-bottom: ${spacing}; padding: ${padding}; background: #f5f5f5; border-radius: 8px;">
+                        <strong style="font-size: ${fontSize};">📅 ${isIt ? 'Eventi' : 'Events'}</strong><br>
+                        <span style="font-size: ${fontSize};">
+                            ${isIt ? '• 11/7 ore 16.30: Inaugurazione' : '• 7/11 4:30 PM: Opening'}<br>
+                            ${isIt ? '• 26/7 ore 19.00: Visita luna piena' : '• 7/26 7:00 PM: Full moon visit'}<br>
+                            ${isIt ? '• 5/9 ore 18.00: Finissage' : '• 9/5 6:00 PM: Closing event'}
+                        </span>
+                        <div style="font-style: italic; font-size: ${isMobile ? '9px' : '11px'}; margin-top: 2px; color: #666;">
+                            ${isIt ? 'Info dettagliate sul volantino' : 'Details in the brochure'}
+                        </div>
                     </div>
 
-                    <div style="margin-bottom: 10px; padding: 8px; background: #f5f5f5; border-radius: 8px;">
-                        <strong> ${isIt ? 'Visite guidate' : 'Guided tours'}</strong><br>
-                        <span style="font-size: 12px;">
-                            ${isIt ? 'Ogni sabato e domenica ore 16.30 dal 12 luglio al 23 agosto - Ore 16.00 dal 29 agosto al 12 settembre' : 'Every Saturday and Sunday at 4:30 PM from July 12 to August 23, and at 4:00 PM from August 29 to September 12.'}<br>
+                    <div style="margin-bottom: ${spacing}; padding: ${padding}; background: #f5f5f5; border-radius: 8px;">
+                        <strong style="font-size: ${fontSize};">${isIt ? '🕐 Visite guidate' : '🕐 Guided tours'}</strong><br>
+                        <span style="font-size: ${fontSize};">
+                            ${isIt ? 'Sabato e domenica ore 16.30 (12/7 - 23/8) - ore 16.00 (29/8 - 12/9)' : 'Sat & Sun 4:30 PM (7/12-8/23) - 4:00 PM (8/29-9/12)'}
                         </span>
                     </div>
                     
-                    <div style="margin-bottom: 10px; padding: 8px; background: #f5f5f5; border-radius: 8px;">
-                        <strong>📞 ${isIt ? 'Contatti' : 'Contacts'}</strong><br>
-                        <span style="font-size: 12px;">
+                    <div style="margin-bottom: ${spacing}; padding: ${padding}; background: #f5f5f5; border-radius: 8px;">
+                        <strong style="font-size: ${fontSize};">📞 ${isIt ? 'Contatti' : 'Contacts'}</strong><br>
+                        <span style="font-size: ${fontSize};">
                             📧 <a href="mailto:baldofestival@baldofestival.org" style="color: #1e90ff; text-decoration: none;">baldofestival@baldofestival.org</a><br>
                             📱 <a href="tel:+393335821964" style="color: #1e90ff; text-decoration: none;">+39 333 582 1964</a>
                         </span>
                     </div>
                     
-                    <div style="text-align: center; margin-top: 6px;">
-                        <a href="./volantino-sentieri-arte.pdf" target="_blank" style="display: inline-block; background: #2d5a27; color: white; padding: 8px 16px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 13px;">
-                            📄 ${isIt ? 'Scarica il volantino (PDF)' : 'Download brochure (PDF)'}
+                    <div style="text-align: center; margin-top: 2px;">
+                        <a href="./volantino-sentieri-arte.pdf" target="_blank" style="display: inline-block; background: #2d5a27; color: white; padding: ${isMobile ? '6px 12px' : '8px 16px'}; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: ${isMobile ? '11px' : '13px'};">
+                            📄 ${isIt ? 'Scarica volantino' : 'Download brochure'}
                         </a>
                     </div>
                 </div>
@@ -1344,169 +1355,117 @@
         function updateFeedbackTranslations(lang) {
             const t = translations[lang];
             
-            // Pulsante feedback
-            document.getElementById('feedbackBtn').innerHTML = t.feedback;
-            document.getElementById('feedbackTooltip').textContent = t.feedbackTooltip;
+            const feedbackBtn = document.getElementById('feedbackBtn');
+            if (feedbackBtn) feedbackBtn.innerHTML = t.feedback;
             
-            // Titoli
-            document.getElementById('feedbackTitle').textContent = t.feedbackTitle;
-            document.getElementById('feedbackSubtitle').textContent = t.feedbackSubtitle;
+            const feedbackTooltip = document.getElementById('feedbackTooltip');
+            if (feedbackTooltip) feedbackTooltip.textContent = t.feedbackTooltip;
             
-            // Etichette
-            document.getElementById('feedbackNameLabel').textContent = t.feedbackNameLabel;
-            document.getElementById('feedbackName').placeholder = t.feedbackNamePlaceholder;
-            document.getElementById('feedbackEmailLabel').textContent = t.feedbackEmailLabel;
-            document.getElementById('feedbackEmail').placeholder = t.feedbackEmailPlaceholder;
-            document.getElementById('feedbackRatingLabel').textContent = t.feedbackRatingLabel;
-            document.getElementById('starsLabel').textContent = t.feedbackStarsLabel;
-            document.getElementById('feedbackMessageLabel').textContent = t.feedbackMessageLabel;
-            document.getElementById('feedbackMessage').placeholder = t.feedbackMessagePlaceholder;
+            const feedbackTitle = document.getElementById('feedbackTitle');
+            if (feedbackTitle) feedbackTitle.textContent = t.feedbackTitle;
             
-            // Pulsante invio
-            document.getElementById('feedbackSubmitBtn').textContent = t.feedbackSubmit;
+            const feedbackSubtitle = document.getElementById('feedbackSubtitle');
+            if (feedbackSubtitle) feedbackSubtitle.textContent = t.feedbackSubtitle;
             
-            // Successo
-            document.getElementById('feedbackSuccessTitle').textContent = t.feedbackSuccessTitle;
-            document.getElementById('feedbackSuccessText').textContent = t.feedbackSuccessText;
-            document.getElementById('feedbackSuccessCloseBtn').textContent = t.feedbackSuccessClose;
+            const nameLabel = document.getElementById('feedbackNameLabel');
+            if (nameLabel) nameLabel.textContent = t.feedbackNameLabel;
             
-            // Stelle labels
+            const nameInput = document.getElementById('feedbackName');
+            if (nameInput) nameInput.placeholder = t.feedbackNamePlaceholder;
+            
+            const emailLabel = document.getElementById('feedbackEmailLabel');
+            if (emailLabel) emailLabel.textContent = t.feedbackEmailLabel;
+            
+            const emailInput = document.getElementById('feedbackEmail');
+            if (emailInput) emailInput.placeholder = t.feedbackEmailPlaceholder;
+            
+            const ratingLabel = document.getElementById('feedbackRatingLabel');
+            if (ratingLabel) ratingLabel.textContent = t.feedbackRatingLabel;
+            
+            const starsLabelEl = document.getElementById('starsLabel');
+            if (starsLabelEl) starsLabelEl.textContent = t.feedbackStarsLabel;
+            
+            const msgLabel = document.getElementById('feedbackMessageLabel');
+            if (msgLabel) msgLabel.textContent = t.feedbackMessageLabel;
+            
+            const msgInput = document.getElementById('feedbackMessage');
+            if (msgInput) msgInput.placeholder = t.feedbackMessagePlaceholder;
+            
+            const submitBtn = document.getElementById('feedbackSubmitBtn');
+            if (submitBtn) submitBtn.textContent = t.feedbackSubmit;
+            
+            const successTitle = document.getElementById('feedbackSuccessTitle');
+            if (successTitle) successTitle.textContent = t.feedbackSuccessTitle;
+            
+            const successText = document.getElementById('feedbackSuccessText');
+            if (successText) successText.textContent = t.feedbackSuccessText;
+            
+            const successClose = document.getElementById('feedbackSuccessCloseBtn');
+            if (successClose) successClose.textContent = t.feedbackSuccessClose;
+            
             window._feedbackStarsLabels = t.feedbackStarsLabels;
-            
-            // Aggiorna stelle se selezionate
             updateStarsLabel();
         }
 
         function updateStarsLabel() {
             const rating = parseInt(document.getElementById('feedbackRating').value) || 0;
             const labels = window._feedbackStarsLabels || ['Seleziona un voto', '★ Terribile', '★★ Scarso', '★★★ Sufficiente', '★★★★ Buono', '★★★★★ Eccellente'];
-            document.getElementById('starsLabel').textContent = labels[rating] || labels[0];
+            const starsLabelEl = document.getElementById('starsLabel');
+            if (starsLabelEl) starsLabelEl.textContent = labels[rating] || labels[0];
         }
 
         // ========================
         // 9. SWITCH LINGUA
         // ========================
-function setLanguage(lang) {
-    currentLang = lang;
-    localStorage.setItem('sentieriLang', lang);
-    
-    // 1. Aggiorna pulsanti lingua
-    document.getElementById('langIt').classList.toggle('active', lang === 'it');
-    document.getElementById('langEn').classList.toggle('active', lang === 'en');
-    
-    // 2. Testi statici
-    const t = translations[lang];
-    document.getElementById('offlineMsg').textContent = t.offline;
-    updateLocateButton();
-    
-    // 3. RICOSTRUISCI FILTRI (sempre)
-    buildFilters();
-    
-    // 4. RICOSTRUISCI LEGENDA (solo se ci sono marker)
-    if (markerData && markerData.length > 0) {
-        const uniqueTypes = new Set(markerData.map(m => m.tipologiaNorm));
-        buildLegend(Array.from(uniqueTypes));
-    } else {
-        // Fallback: solo sentiero
-        const legendDiv = document.getElementById('legend');
-        legendDiv.innerHTML = `<strong>${t.legend}</strong><br><span style="background-color:red;"></span> ${t.trail}`;
-    }
-    
-    // 5. Aggiorna popup di tutti i marker (con controllo esistenza)
-    if (markerData && markerData.length > 0) {
-        markerData.forEach(item => {
-            if (item.marker && item.rawData) {
-                updatePopupContent(item.marker, item.rawData, item.tipologiaNorm, lang);
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('sentieriLang', lang);
+            
+            document.getElementById('langIt').classList.toggle('active', lang === 'it');
+            document.getElementById('langEn').classList.toggle('active', lang === 'en');
+            
+            const t = translations[lang];
+            document.getElementById('offlineMsg').textContent = t.offline;
+            updateLocateButton();
+            
+            buildFilters();
+            
+            if (markerData && markerData.length > 0) {
+                const uniqueTypes = new Set(markerData.map(m => m.tipologiaNorm));
+                buildLegend(Array.from(uniqueTypes));
+            } else {
+                const legendDiv = document.getElementById('legend');
+                legendDiv.innerHTML = `<strong>${t.legend}</strong><br><span style="background-color:red;"></span> ${t.trail}`;
             }
+            
+            if (markerData && markerData.length > 0) {
+                markerData.forEach(item => {
+                    if (item.marker && item.rawData) {
+                        updatePopupContent(item.marker, item.rawData, item.tipologiaNorm, lang);
+                    }
+                });
+            }
+            
+            if (parkingMarker && parkingMarker._rawData) {
+                updatePopupContent(parkingMarker, parkingMarker._rawData, 'parcheggio', lang);
+            }
+            
+            if (infoMarker && infoMarker._rawData) {
+                updatePopupContent(infoMarker, infoMarker._rawData, 'info', lang);
+            }
+            
+            updateFeedbackTranslations(lang);
+            
+            filterMarkers(currentFilter);
+            updateCounter();
+        }
+
+        document.getElementById('langIt').addEventListener('click', function() {
+            setLanguage('it');
         });
-    }
-    
-    // 6. Aggiorna popup parcheggio
-    if (parkingMarker && parkingMarker._rawData) {
-        updatePopupContent(parkingMarker, parkingMarker._rawData, 'parcheggio', lang);
-    }
-    
-    // 7. Aggiorna popup info
-    if (infoMarker && infoMarker._rawData) {
-        updatePopupContent(infoMarker, infoMarker._rawData, 'info', lang);
-    }
-    
-    // 8. Aggiorna traduzioni feedback
-    updateFeedbackTranslations(lang);
-    
-    // 9. RICOSTRUISCI I MARKER NEL CLUSTER E POI AGGIORNA IL CONTATORE
-    filterMarkers(currentFilter);
-    updateCounter(); // <-- CHIAMATO DOPO filterMarkers
-}
-
-// Event listener per i pulsanti lingua
-document.getElementById('langIt').addEventListener('click', function() {
-    setLanguage('it');
-});
-
-document.getElementById('langEn').addEventListener('click', function() {
-    setLanguage('en');
-});
-
-function updateFeedbackTranslations(lang) {
-    const t = translations[lang];
-    
-    // Aggiorna pulsante feedback
-    const feedbackBtn = document.getElementById('feedbackBtn');
-    if (feedbackBtn) {
-        feedbackBtn.innerHTML = t.feedback;
-    }
-    
-    // Aggiorna tooltip
-    const feedbackTooltip = document.getElementById('feedbackTooltip');
-    if (feedbackTooltip) {
-        feedbackTooltip.textContent = t.feedbackTooltip;
-    }
-    
-    // Aggiorna titoli modale
-    const feedbackTitle = document.getElementById('feedbackTitle');
-    if (feedbackTitle) feedbackTitle.textContent = t.feedbackTitle;
-    
-    const feedbackSubtitle = document.getElementById('feedbackSubtitle');
-    if (feedbackSubtitle) feedbackSubtitle.textContent = t.feedbackSubtitle;
-    
-    // Aggiorna etichette
-    const nameLabel = document.getElementById('feedbackNameLabel');
-    if (nameLabel) nameLabel.textContent = t.feedbackNameLabel;
-    
-    const nameInput = document.getElementById('feedbackName');
-    if (nameInput) nameInput.placeholder = t.feedbackNamePlaceholder;
-    
-    const emailLabel = document.getElementById('feedbackEmailLabel');
-    if (emailLabel) emailLabel.textContent = t.feedbackEmailLabel;
-    
-    const emailInput = document.getElementById('feedbackEmail');
-    if (emailInput) emailInput.placeholder = t.feedbackEmailPlaceholder;
-    
-    const ratingLabel = document.getElementById('feedbackRatingLabel');
-    if (ratingLabel) ratingLabel.textContent = t.feedbackRatingLabel;
-    
-    const starsLabel = document.getElementById('starsLabel');
-    if (starsLabel) starsLabel.textContent = t.feedbackStarsLabel;
-    
-    const msgLabel = document.getElementById('feedbackMessageLabel');
-    if (msgLabel) msgLabel.textContent = t.feedbackMessageLabel;
-    
-    const msgInput = document.getElementById('feedbackMessage');
-    if (msgInput) msgInput.placeholder = t.feedbackMessagePlaceholder;
-    
-    const submitBtn = document.getElementById('feedbackSubmitBtn');
-    if (submitBtn) submitBtn.textContent = t.feedbackSubmit;
-    
-    const successTitle = document.getElementById('feedbackSuccessTitle');
-    if (successTitle) successTitle.textContent = t.feedbackSuccessTitle;
-    
-    const successText = document.getElementById('feedbackSuccessText');
-    if (successText) successText.textContent = t.feedbackSuccessText;
-    
-    const successClose = document.getElementById('feedbackSuccessCloseBtn');
-    if (successClose) successClose.textContent = t.feedbackSuccessClose;
-}
+        document.getElementById('langEn').addEventListener('click', function() {
+            setLanguage('en');
+        });
 
         // ========================
         // 10. FEEDBACK MODALE
@@ -1526,7 +1485,6 @@ function updateFeedbackTranslations(lang) {
         const starsContainer = document.getElementById('starsContainer');
         const starsLabel = document.getElementById('starsLabel');
 
-        // Stelle
         let selectedRating = 0;
         const starEls = starsContainer.querySelectorAll('span');
 
@@ -1556,7 +1514,6 @@ function updateFeedbackTranslations(lang) {
             updateStarsLabel();
         }
 
-        // Apri modale
         feedbackBtn.addEventListener('click', function() {
             feedbackOverlay.classList.add('active');
             feedbackFormContainer.style.display = 'block';
@@ -1566,7 +1523,6 @@ function updateFeedbackTranslations(lang) {
             feedbackSubmitBtn.textContent = t.feedbackSubmit;
         });
 
-        // Chiudi modale
         function closeFeedback() {
             feedbackOverlay.classList.remove('active');
         }
@@ -1582,7 +1538,6 @@ function updateFeedbackTranslations(lang) {
         // ========================
         // 11. INVIO FEEDBACK (Formspree)
         // ========================
-        // 🔧 SOSTITUISCI CON IL TUO FORMSPREE ID
         const FORMSPREE_ID = 'mykqqgdb';
 
         feedbackForm.addEventListener('submit', async function(e) {
@@ -1648,97 +1603,96 @@ function updateFeedbackTranslations(lang) {
             lng: '10.824881'
         };
 
-fetch('markers.json')
-    .then(response => {
-        console.log('📥 Status:', response.status);
-        if (!response.ok) throw new Error('HTTP ' + response.status);
-        return response.json();
-    })
-    .then(data => {
-        if (!data.length) throw new Error('Nessun marker');
-        console.log('✅ Dati caricati:', data.length);
-        
-        const typesSet = new Set();
-        
-        // Passo 1: Normalizza i dati
-        data.forEach(m => {
-            let tipologia = m.tipologia;
-            if (tipologia === 'opera' || tipologia === 'opere') tipologia = 'opera';
-            else if (tipologia === 'storico' || tipologia === 'Punti storici') tipologia = 'storico';
-            else if (tipologia === 'parcheggio' || tipologia === 'Parcheggio') tipologia = 'parcheggio';
-            else tipologia = 'opera';
-            m.tipologiaNorm = tipologia;
-            typesSet.add(tipologia);
-        });
-        const uniqueTypes = Array.from(typesSet);
-        console.log('📌 Tipologie trovate:', uniqueTypes);
+        fetch('markers.json')
+            .then(response => {
+                console.log('📥 Status:', response.status);
+                if (!response.ok) throw new Error('HTTP ' + response.status);
+                return response.json();
+            })
+            .then(data => {
+                if (!data.length) throw new Error('Nessun marker');
+                console.log('✅ Dati caricati:', data.length);
+                
+                const typesSet = new Set();
+                
+                data.forEach(m => {
+                    let tipologia = m.tipologia;
+                    if (tipologia === 'opera' || tipologia === 'opere') tipologia = 'opera';
+                    else if (tipologia === 'storico' || tipologia === 'Punti storici') tipologia = 'storico';
+                    else if (tipologia === 'parcheggio' || tipologia === 'Parcheggio') tipologia = 'parcheggio';
+                    else tipologia = 'opera';
+                    m.tipologiaNorm = tipologia;
+                    typesSet.add(tipologia);
+                });
+                const uniqueTypes = Array.from(typesSet);
+                console.log('📌 Tipologie trovate:', uniqueTypes);
 
-        // Passo 2: Crea il marker INFO
-        const infoIcon = getInfoIcon();
-        const infoPopupContent = buildInfoPopup(currentLang);
-        const infoMarkerObj = L.marker([45.618739, 10.824881], {
-            icon: infoIcon,
-            pane: 'parkingPane'
-        }).bindPopup(infoPopupContent);
-        infoMarkerObj._rawData = infoData;
-        infoMarkerObj.addTo(map);
-        infoMarker = infoMarkerObj;
-
-        // Passo 3: Crea tutti i marker e aggiungili a allMarkers
-        data.forEach(m => {
-            const lat = parseFloat(m.lat);
-            const lng = parseFloat(m.lng);
-            if (isNaN(lat) || isNaN(lng)) return;
-            const tipologia = m.tipologiaNorm;
-            
-            if (tipologia === 'parcheggio') {
-                const icon = getParkingIcon();
-                const popupContent = buildPopupContent(m, 'parcheggio', currentLang);
-                const marker = L.marker([lat, lng], { 
-                    icon: icon,
+                const infoIcon = getInfoIcon();
+                const infoPopupContent = buildInfoPopup(currentLang);
+                const infoMarkerObj = L.marker([45.618739, 10.824881], {
+                    icon: infoIcon,
                     pane: 'parkingPane'
-                }).bindPopup(popupContent);
-                marker._rawData = m;
-                marker.addTo(map);
-                parkingMarker = marker;
-                return;
-            }
-            
-            const color = colorMap[tipologia] || '#cccccc';
-            const icon = getColoredIcon(color);
-            const popupContent = buildPopupContent(m, tipologia, currentLang);
-            const marker = L.marker([lat, lng], { icon }).bindPopup(popupContent);
-            marker._rawData = m;
-            allMarkers.push({ marker, tipologia, rawData: m });
-            markerData.push({ marker, tipologiaNorm: tipologia, rawData: m });
-        });
+                }).bindPopup(infoPopupContent, {
+                    maxWidth: isMobile ? 300 : 400,
+                    minWidth: isMobile ? 200 : 280,
+                    className: 'custom-popup'
+                });
+                infoMarkerObj._rawData = infoData;
+                infoMarkerObj.addTo(map);
+                infoMarker = infoMarkerObj;
 
-        console.log('📍 Marker creati:', allMarkers.length);
+                data.forEach(m => {
+                    const lat = parseFloat(m.lat);
+                    const lng = parseFloat(m.lng);
+                    if (isNaN(lat) || isNaN(lng)) return;
+                    const tipologia = m.tipologiaNorm;
+                    
+                    if (tipologia === 'parcheggio') {
+                        const icon = getParkingIcon();
+                        const popupContent = buildPopupContent(m, 'parcheggio', currentLang);
+                        const marker = L.marker([lat, lng], { 
+                            icon: icon,
+                            pane: 'parkingPane'
+                        }).bindPopup(popupContent);
+                        marker._rawData = m;
+                        marker.addTo(map);
+                        parkingMarker = marker;
+                        return;
+                    }
+                    
+                    const color = colorMap[tipologia] || '#cccccc';
+                    const icon = getColoredIcon(color);
+                    const popupContent = buildPopupContent(m, tipologia, currentLang);
+                    const marker = L.marker([lat, lng], { icon }).bindPopup(popupContent);
+                    marker._rawData = m;
+                    allMarkers.push({ marker, tipologia, rawData: m });
+                    markerData.push({ marker, tipologiaNorm: tipologia, rawData: m });
+                });
 
-        // Passo 4: Ora che TUTTI i marker sono in allMarkers, applica i filtri
-        document.getElementById('langIt').classList.toggle('active', currentLang === 'it');
-        document.getElementById('langEn').classList.toggle('active', currentLang === 'en');
-        
-        buildFilters();
-        buildLegend(uniqueTypes);
-        
-        // Passo 5: Forza l'aggiornamento del cluster
-        filterMarkers('Tutti');
-        updateLocateButton();
-        
-        const t = translations[currentLang];
-        document.getElementById('offlineMsg').textContent = t.offline;
-        
-        updateFeedbackTranslations(currentLang);
-    })
-    .catch(err => {
-        console.error('❌ ERRORE caricamento markers.json:', err);
-        const t = translations[currentLang];
-        document.getElementById('counter').innerHTML = t.noMarkers;
-        document.getElementById('legend').innerHTML = `<strong>${t.legend}</strong><br><span style="background-color:red;"></span> ${t.trail}`;
-        buildFilters();
-        updateFeedbackTranslations(currentLang);
-    });
+                console.log('📍 Marker creati:', allMarkers.length);
+
+                document.getElementById('langIt').classList.toggle('active', currentLang === 'it');
+                document.getElementById('langEn').classList.toggle('active', currentLang === 'en');
+                
+                buildFilters();
+                buildLegend(uniqueTypes);
+                
+                filterMarkers('Tutti');
+                updateLocateButton();
+                
+                const t = translations[currentLang];
+                document.getElementById('offlineMsg').textContent = t.offline;
+                
+                updateFeedbackTranslations(currentLang);
+            })
+            .catch(err => {
+                console.error('❌ ERRORE caricamento markers.json:', err);
+                const t = translations[currentLang];
+                document.getElementById('counter').innerHTML = t.noMarkers;
+                document.getElementById('legend').innerHTML = `<strong>${t.legend}</strong><br><span style="background-color:red;"></span> ${t.trail}`;
+                buildFilters();
+                updateFeedbackTranslations(currentLang);
+            });
 
         function escapeHtml(str) {
             if (!str) return '';
@@ -1818,4 +1772,3 @@ fetch('markers.json')
         }
     </script>
 </body>
-</html>
