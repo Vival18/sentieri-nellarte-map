@@ -43,6 +43,17 @@
         "thumbnail": "images/chiesaPazzon.webp",
         "tipologia": "storico"
     },
+        {
+        "title": "Momunmento ai caduti di Pazzon",
+        "title_en": "Pazzon War Memorial",
+        "content": "",
+        "excerpt": "Il Monumento ai Caduti di Pazzon, inaugurato il 1º luglio 1923, ricorda gli abitanti della frazione che persero la vita durante la Prima e la Seconda guerra mondiale. Progettato dall'architetto veronese Francesco Banterle, si presenta come un elegante obelisco in marmo decorato con simboli commemorativi, tra cui una corona d'alloro in bronzo. Sulle sue superfici sono incisi i nomi dei caduti, a testimonianza del sacrificio della comunità locale.",
+        "excerpt_en": "The Pazzon War Memorial, inaugurated on 1 July 1923, commemorates the residents of the village who lost their lives during the First and Second World Wars. Designed by the architect Francesco Banterle from Verona, it features an elegant marble obelisk adorned with commemorative symbols, including a bronze laurel wreath. The names of the fallen are engraved on its surfaces, preserving the memory of the local community's sacrifice.",
+        "lat": "45.618082",
+        "lng": "10.824258",
+        "thumbnail": "",
+        "tipologia": "storico"
+    },
     {
         "title": "Parcheggio",
         "title_en": "Parking",
@@ -54,6 +65,18 @@
         "thumbnail": false,
         "tipologia": "parcheggio",
         "google_maps_url": "https://www.google.com/maps/dir/?api=1&destination=45.61924045194073,10.824523648758404&travelmode=driving"
+    },
+
+    {
+        "title": "Screen saver",
+        "title_en": "Screen saver",
+        "content": "",
+        "excerpt": "Opera di Tommaso Carozzi",
+        "excerpt_en": "Artwork by Tommaso Carozzi",
+        "lat": "45.619770",
+        "lng": "10.826967",
+        "thumbnail": false,
+        "tipologia": "opera"
     },
 
     {
