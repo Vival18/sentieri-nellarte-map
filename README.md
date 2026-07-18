@@ -74,13 +74,33 @@ text
 
 ## 📄 Licenza e crediti
 
-    Mappa Bianca – progetto base realizzato da Vival18.
+### Copyright
 
-    Leaflet – libreria open source (BSD 2-Clause).
+Copyright (c) 2026 Fabio Vivaldi - Mappa Bianca
+Tutti i diritti riservati.
 
-    OpenStreetMap – tile layer (© contributori OSM).
+Questo software e tutti i file associati sono di proprietà di Fabio Vivaldi.
+Non è consentito copiare, modificare, distribuire o utilizzare questo software
+senza esplicita autorizzazione scritta.
 
-    Baldo Festival – ideatore del percorso “Sentieri nell’Arte”.
+Per informazioni o richieste di licenza:
+📧 contatti.mappabianca@gmail.com
+🌐 https://vival18.github.io/mappa-bianca/
+
+
+### Status del progetto
+- **Demo gratuita** per il Baldo Festival – concessa in cambio di referenza e crediti.
+- **Uso personale / portfolio**: è consentito clonare il repository per studio o ispirazione, ma **non** per progetti commerciali o distribuzione pubblica.
+- **Per usi commerciali o integrazioni avanzate**: contattare lo sviluppatore per una licenza personalizzata.
+
+### Crediti
+- **Mappa Bianca** – progetto base realizzato da [Fabio Vivaldi](https://vival18.github.io/mappa-bianca/).
+- **Leaflet** – libreria open source (BSD 2-Clause).
+- **OpenStreetMap** – tile layer (© contributori OSM).
+- **Baldo Festival** – ideatore del percorso "Sentieri nell'Arte".
+
+---
+*Ultimo aggiornamento: luglio 2026*
 
 ## Questa demo è un pilota gratuito in cambio di referenza e crediti. Per usi commerciali o integrazioni avanzate, contattare lo sviluppatore.
 
