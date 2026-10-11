@@ -123,7 +123,7 @@ window.APP_CONFIG = {
         it: {
             legend: 'Legenda',
             trail: 'Sentiero',
-            locate: '📍 La mia posizione',
+            locate: '📍 GPS',
             locating: '📍 Ricerca...',
             noMarkers: 'ℹ️ Nessun punto d’interesse (solo sentiero)',
             offline: '⚠️ Mappa offline. Alcune funzionalità potrebbero non essere disponibili.',
@@ -176,7 +176,7 @@ window.APP_CONFIG = {
         en: {
             legend: 'Legend',
             trail: 'Trail',
-            locate: '📍 My location',
+            locate: '📍 GPS',
             locating: '📍 Searching...',
             noMarkers: 'ℹ️ No points of interest (trail only)',
             offline: '⚠️ Offline map. Some features may be unavailable.',
