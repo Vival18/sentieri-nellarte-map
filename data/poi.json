@@ -1,0 +1,354 @@
+[
+    {
+        "title": "Fontana di Pazzon",
+        "title_en": "Pazzon Fountain",
+        "content": "",
+        "excerpt": "Imponente fontana in marmo rosso Verona, scavata in un unico blocco di pietra, situata nella piazza di Pazzon. Questo antico manufatto è un punto di riferimento per gli escursionisti che percorrono le 'Vie dell'Acqua' e il punto di partenza per il sentiero che conduce alla suggestiva Valle del Tasso. Dalla piazza si gode di un ampio panorama sulla vallata di Caprino e sul Monte Baldo.",
+        "excerpt_en": "Impressive fountain made of Verona red marble, carved from a single block of stone, located in Pazzon square. This ancient artifact is a landmark for hikers following the 'Water Ways' and the starting point for the trail leading to the suggestive Tasso Valley. From the square you can enjoy a wide panorama over the Caprino valley and Monte Baldo.",
+        "lat": "45.61867687782041",
+        "lng": "10.8250107031088",
+        "thumbnail": "images/fontanaPazzon2.webp",
+        "tipologia": "storico"
+    },
+    {
+        "title": "Lavatoio di Porcino",
+        "title_en": "Porcino Washhouse",
+        "content": "",
+        "excerpt": "Abbeveratoio e lavatoio pubblico, costruito nel 1871 in pietra locale. Il lavatoio presenta quattro vasche. L'acqua conclude il percorso nel sottostante Torrente Tasso.",
+        "excerpt_en": "Public drinking trough and washhouse, built in 1871 from local stone. The washhouse features four basins. The water flows into the Tasso stream below.",
+        "lat": "45.61706003089321",
+        "lng": "10.828864576103808",
+        "thumbnail": "images/lavatoioPorcino.webp",
+        "tipologia": "storico"
+    },
+    {
+        "title": "Lavatoio di Pazzon",
+        "title_en": "Pazzon Washhouse",
+        "content": "",
+        "excerpt": "Antico e grande lavatoio in marmo, situato lungo il sentiero che dalla piazza di Pazzon scende verso il torrente Tasso. Questo luogo è una tappa caratteristica del percorso verso la Val del Tasso, un punto di sosta che racconta la storia rurale di questi luoghi.",
+        "excerpt_en": "Ancient large marble washhouse, located along the path that descends from Pazzon square towards the Tasso stream. This place is a characteristic stop on the route to the Tasso Valley, a resting point that tells the rural history of these places.",
+        "lat": "45.619656137107775",
+        "lng": "10.82704951674641",
+        "thumbnail": "images/lavatoioPazzon.webp",
+        "tipologia": "storico"
+    },
+    {
+        "title": "Chiesa di Pazzon",
+        "title_en": "Pazzon Church",
+        "content": "",
+        "excerpt": "Le prime notizie di una chiesa a Pazzon risalgono al 1145, una cappella romanica dedicata ai Santi Vito, Modesto e Crescenzia. Nel 1568 diventa Parrocchia indipendente da Caprino. L'attuale chiesa, in pregiato marmo rosso della zona, è stata costruita tra il 1932 e il 1934 e consacrata nel 1935. L'interno presenta tre navate con colonnato e soffitto a botte. Il campanile, restaurato nel 1833, ospita 5 campane.",
+        "excerpt_en": "The first records of a church in Pazzon date back to 1145, a Romanesque chapel dedicated to Saints Vitus, Modestus and Crescentia. In 1568 it became an independent parish from Caprino. The current church, made of fine local red marble, was built between 1932 and 1934 and consecrated in 1935. The interior features three naves with a colonnade and a barrel vault. The bell tower, restored in 1833, houses 5 bells.",
+        "lat": "45.618967",
+        "lng": "10.824253",
+        "thumbnail": "images/chiesaPazzon.webp",
+        "tipologia": "storico"
+    },
+        {
+        "title": "Monumento ai caduti di Pazzon",
+        "title_en": "Pazzon War Memorial",
+        "content": "",
+        "excerpt": "Il Monumento ai Caduti di Pazzon, inaugurato il 1º luglio 1923, ricorda gli abitanti della frazione che persero la vita durante la Prima e la Seconda guerra mondiale. Progettato dall'architetto veronese Francesco Banterle, si presenta come un elegante obelisco in marmo decorato con simboli commemorativi, tra cui una corona d'alloro in bronzo. Sulle sue superfici sono incisi i nomi dei caduti, a testimonianza del sacrificio della comunità locale.",
+        "excerpt_en": "The Pazzon War Memorial, inaugurated on 1 July 1923, commemorates the residents of the village who lost their lives during the First and Second World Wars. Designed by the architect Francesco Banterle from Verona, it features an elegant marble obelisk adorned with commemorative symbols, including a bronze laurel wreath. The names of the fallen are engraved on its surfaces, preserving the memory of the local community's sacrifice.",
+        "lat": "45.618082",
+        "lng": "10.824258",
+        "thumbnail": "",
+        "tipologia": "storico"
+    },
+            {
+        "title": "Fornace di Porcino",
+        "title_en": "Porcino Furnace",
+        "content": "",
+        "excerpt": "Porcino era nota per la produzione dei coppi in laterizio. Grazie alla presenza di argilla, acqua e legname, le fornaci locali trasformavano le risorse del territorio in materiali per i tetti delle abitazioni. Un'attività artigianale che ha segnato la storia e l'identità della contrada.",
+        "excerpt_en": "Porcino was known for the production of tiles in laterizio. Thanks to the presence of clay, water and wood, the local furnaces transformed the resources of the territory into materials for the roofs of houses. An artisanal activity that marked the history and identity of the hamlet.",
+        "lat": "45.616946",
+        "lng": "10.830486",
+        "thumbnail": "images/Fornace.webp",
+        "tipologia": "storico"
+    },
+    {
+        "title": "Parcheggio",
+        "title_en": "Parking",
+        "content": "",
+        "excerpt": "Parcheggio gratuito vicino alla partenza del sentiero",
+        "excerpt_en": "Free parking near the start of the trail",
+        "lat": "45.61924045194073",
+        "lng": "10.824523648758404",
+        "thumbnail": false,
+        "tipologia": "parcheggio",
+        "google_maps_url": "https://www.google.com/maps/dir/?api=1&destination=45.61924045194073,10.824523648758404&travelmode=driving"
+    },
+
+{
+    "id": "B&B La Fornasa",
+    "title": "B&B La Fornasa",
+    "title_en": "B&B La Fornasa",
+    "excerpt": "Il B&B La Fornasa si trova nella località di Porcino, in una casa ristrutturata accanto a un'antica fornace del XVII secolo, un tempo utilizzato per la produzione delle celebri tegole locali. Immerso nel verde, offre due camere accoglienti con bagno privato e frigorifero, un giardino con animali da cortile e spazi per il relax. La posizione strategica permette di raggiungere facilmente il Lago di Garda, il Santuario della Madonna della Corona e i sentieri del Monte Baldo.",
+    "excerpt_en": "B&B La Fornasa is located in Porcino, Caprino Veronese, in a renovated house next to a 17th-century kiln, once used for producing the famous local tiles. Surrounded by nature, it offers two cozy rooms with private bathrooms and a refrigerator, a garden with farm animals, and spaces for relaxation. Its strategic location provides easy access to Lake Garda, the Sanctuary of Madonna della Corona, and the trails of Monte Baldo.",
+    "content": "B&B La Fornasa è un'azienda agricola situata a Pazzon, frazione di Caprino Veronese, che offre un'esperienza autentica della vita rurale. Gli ospiti possono godere di una vista panoramica sulle colline veronesi e di un ambiente tranquillo e accogliente. L'attività offre servizi di ristorazione e pernottamento in un contesto naturale e sereno.",
+    "thumbnail": "images/beb la fornasa.webp",
+    "lat": 45.617126,
+    "lng": 10.830411,
+    "google_maps_url": "https://maps.app.goo.gl/KNn6dZbEE8t72jhj8",
+    "tipologia": "attivita",
+    "tags": ["b&b", "tipico", "veronese", "accogliente", "relax"],
+    "contact": {
+        "phone": "+39 349 5102645",
+        "website": "https://sites.google.com/view/bedandbreakfastlafornasa/home"
+    }
+},
+
+    {
+        "title": "Screen saver",
+        "title_en": "Screen saver",
+        "content": "",
+        "excerpt": "Opera di Tommaso Carozzi",
+        "excerpt_en": "Artwork by Tommaso Carozzi",
+        "lat": "45.619770",
+        "lng": "10.826967",
+        "thumbnail": false,
+        "tipologia": "opera"
+    },
+
+    {
+        "title": "-273",
+        "title_en": "-273",
+        "content": "",
+        "excerpt": "Opera di Michele Farina",
+        "excerpt_en": "Artwork by Michele Farina",
+        "lat": "45.619332",
+        "lng": "10.826801",
+        "thumbnail": false,
+        "tipologia": "opera"
+    },
+    {
+        "title": "Casa della luce",
+        "title_en": "Casa della luce",
+        "content": "",
+        "excerpt": "Opera di Emma Brighenti",
+        "excerpt_en": "Artwork by Emma Brighenti",
+        "lat": "45.622478",
+        "lng": "10.830760",
+        "thumbnail": false,
+        "tipologia": "opera"
+    },
+    {
+        "title": "Terre rare",
+        "title_en": "Terre rare",
+        "content": "",
+        "excerpt": "Opera di Graziano Concari",
+        "excerpt_en": "Artwork by Graziano Concari",
+        "lat": "45.622673",
+        "lng": "10.831307",
+        "thumbnail": false,
+        "tipologia": "opera"
+    },
+    {
+        "title": "Flores mixti / La città dei fiori",
+        "title_en": "Flores mixti / La città dei fiori",
+        "content": "",
+        "excerpt": "Opera di Adelino Rossi",
+        "excerpt_en": "Artwork by Adelino Rossi",
+        "lat": "45.623498",
+        "lng": "10.832895",
+        "thumbnail": false,
+        "tipologia": "opera"
+    },
+    {
+        "title": "Genusus Loci",
+        "title_en": "Genusus Loci",
+        "content": "",
+        "excerpt": "Opera di Riccardo Mazzei",
+        "excerpt_en": "Artwork by Riccardo Mazzei",
+        "lat": "45.623585",
+        "lng": "10.833308",
+        "thumbnail": false,
+        "tipologia": "opera"
+    },
+    {
+        "title": "An old-School kind of love",
+        "title_en": "An old-School kind of love",
+        "content": "",
+        "excerpt": "Opera di Antonella Argentile",
+        "excerpt_en": "Artwork by Antonella Argentile",
+        "lat": "45.623439",
+        "lng": "10.834011",
+        "thumbnail": false,
+        "tipologia": "opera"
+    },
+    {
+        "title": "Tenera eufonia",
+        "title_en": "Tenera eufonia",
+        "content": "",
+        "excerpt": "Opera di Chiara Castagna",
+        "excerpt_en": "Artwork by Chiara Castagna",
+        "lat": "45.623915",
+        "lng": "10.833496",
+        "thumbnail": false,
+        "tipologia": "opera"
+    },
+    {
+        "title": "Tutto scorreva",
+        "title_en": "Tutto scorreva",
+        "content": "",
+        "excerpt": "Opera di Giulia Miorotti",
+        "excerpt_en": "Artwork by Giulia Miorotti",
+        "lat": "45.624249",
+        "lng": "10.834032",
+        "thumbnail": false,
+        "tipologia": "opera"
+    },
+    {
+        "title": "My Beloved Tile",
+        "title_en": "My Beloved Tile",
+        "content": "",
+        "excerpt": "Opera di Davide Sbardella",
+        "excerpt_en": "Artwork by Davide Sbardella",
+        "lat": "45.624654",
+        "lng": "10.834011",
+        "thumbnail": false,
+        "tipologia": "opera"
+    },
+    {
+        "title": "Limen",
+        "title_en": "Limen",
+        "content": "",
+        "excerpt": "Opera di Giovanni Pinosio",
+        "excerpt_en": "Artwork by Giovanni Pinosio",
+        "lat": "45.624778",
+        "lng": "10.833946",
+        "thumbnail": false,
+        "tipologia": "opera"
+    },
+    {
+        "title": "Omaggio al Gek",
+        "title_en": "Omaggio al Gek",
+        "content": "",
+        "excerpt": "Opera di Nicoletta Vascotto",
+        "excerpt_en": "Artwork by Nicoletta Vascotto",
+        "lat": "45.617403",
+        "lng": "10.829033",
+        "thumbnail": false,
+        "tipologia": "opera"
+    },
+    {
+        "title": "Silenzio",
+        "title_en": "Silenzio",
+        "content": "",
+        "excerpt": "Opera di Giancarlo Brunelli",
+        "excerpt_en": "Artwork by Giancarlo Brunelli",
+        "lat": "45.617748",
+        "lng": "10.829408",
+        "thumbnail": false,
+        "tipologia": "opera"
+    },
+    {
+        "title": "Sapendo solamente di essere persi",
+        "title_en": "Sapendo solamente di essere persi",
+        "content": "",
+        "excerpt": "Opera di Antonio Franchetti",
+        "excerpt_en": "Artwork by Antonio Franchetti",
+        "lat": "45.620018",
+        "lng": "10.831661",
+        "thumbnail": false,
+        "tipologia": "opera"
+    },
+    {
+        "title": "Equilibrio apparente",
+        "title_en": "Equilibrio apparente",
+        "content": "",
+        "excerpt": "Opera di Angela Zanchettin",
+        "excerpt_en": "Artwork by Angela Zanchettin",
+        "lat": "45.623693",
+        "lng": "10.834386",
+        "thumbnail": false,
+        "tipologia": "opera"
+    },
+    {
+        "title": "Rizoma",
+        "title_en": "Rizoma",
+        "content": "",
+        "excerpt": "Opera di Lucia Amalia Maggio",
+        "excerpt_en": "Artwork by Lucia Amalia Maggio",
+        "lat": "45.623117",
+        "lng": "10.834301",
+        "thumbnail": false,
+        "tipologia": "opera"
+    },
+    {
+        "title": "Radicatus",
+        "title_en": "Radicatus",
+        "content": "",
+        "excerpt": "Opera del Collettivo Corrente",
+        "excerpt_en": "Artwork by Collettivo Corrente",
+        "lat": "45.624137",
+        "lng": "10.833217",
+        "thumbnail": false,
+        "tipologia": "opera"
+    },
+    {
+        "title": "La nuvola",
+        "title_en": "La nuvola",
+        "content": "",
+        "excerpt": "Opera di Laure Keyrouz",
+        "excerpt_en": "Artwork by Laure Keyrouz",
+        "lat": "45.621645",
+        "lng": "10.832412",
+        "thumbnail": false,
+        "tipologia": "opera"
+    },
+    {
+        "title": "Messaggeri",
+        "title_en": "Messaggeri",
+        "content": "",
+        "excerpt": "Opera di Luciana Soriato",
+        "excerpt_en": "Artwork by Luciana Soriato",
+        "lat": "45.623935",
+        "lng": "10.832627",
+        "thumbnail": false,
+        "tipologia": "opera"
+    },
+    {
+        "title": "Il seme della vita",
+        "title_en": "Il seme della vita",
+        "content": "",
+        "excerpt": "Opera di Cristina Annichini",
+        "excerpt_en": "Artwork by Cristina Annichini",
+        "lat": "45.617449",
+        "lng": "10.829333",
+        "thumbnail": false,
+        "tipologia": "opera"
+    },
+    {
+        "title": "L'anima dei saggi",
+        "title_en": "L'anima dei saggi",
+        "content": "",
+        "excerpt": "Opera di Iolanda Martini (punto 1)",
+        "excerpt_en": "Artwork by Iolanda Martini (point 1)",
+        "lat": "45.622916",
+        "lng": "10.831983",
+        "thumbnail": false,
+        "tipologia": "opera"
+    },
+    {
+        "title": "L'anima dei saggi",
+        "title_en": "L'anima dei saggi",
+        "content": "",
+        "excerpt": "Opera di Iolanda Martini (punto 2)",
+        "excerpt_en": "Artwork by Iolanda Martini (point 2)",
+        "lat": "45.617503",
+        "lng": "10.829387",
+        "thumbnail": false,
+        "tipologia": "opera"
+    },
+    {
+        "title": "Dove sono adagiati",
+        "title_en": "Dove sono adagiati",
+        "content": "",
+        "excerpt": "Opera di Lawren Spera e Steve Ingham",
+        "excerpt_en": "Artwork by Lawren Spera and Steve Ingham",
+        "lat": "45.624791",
+        "lng": "10.834236",
+        "thumbnail": false,
+        "tipologia": "opera"
+    }
+]
